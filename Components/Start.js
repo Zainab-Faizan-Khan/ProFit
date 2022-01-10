@@ -11,9 +11,11 @@ export default function Start({navigation}) {
     const edges = useSafeAreaInsets();
 
     return (
-        <View style={{backgroundColor:'#d7edf0'}}>
+      
+        <View style={{backgroundColor:'white',height:1000}}>
+        <Image source={require("../assets/headerlogo.png")}  style={{ height:100, width: 150, marginTop:20}}/>
         <Image source={require('../assets/guy.jpg')} 
-             style={{marginTop:30, height:440, width:410
+             style={{marginTop:30, height:400, width:410
         }}/>
         <Text style={{fontSize:25, paddingTop:36,paddingLeft:15,fontWeight:'bold'}}>The Ultimate Diet Plan</Text>
         <Text style={{fontSize:15,paddingTop:24,paddingLeft:15, color:'#929798'}}>ProFit serves as a resuorse and highlight the nutrient rich food that one should incorporate in their daily gym diet plan</Text>

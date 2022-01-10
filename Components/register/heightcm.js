@@ -1,11 +1,12 @@
 import React from 'react';
-import {StyleSheet, Button, Text, View,TextInput } from 'react-native';
+import {StyleSheet, Button, Text, View,TextInput ,Image} from 'react-native';
 
 
 export default function CM({navigation}){
     return(
-        <View style={{backgroundColor:'#d7edf0', height:800}}>
-        <Text style={{marginTop:130,marginLeft:80, fontSize:25,fontWeight:'bold',marginBottom:70}}>What is your Height?</Text>
+        <View style={{backgroundColor:'#d7edf0', height:2000}}>
+         <Image source={require("../register/assetsregister/header.png")}  style={{ height:100, width: 150, marginTop:40,marginLeft:120}}/>
+        <Text style={{marginTop:100,marginLeft:80, fontSize:25,fontWeight:'bold',marginBottom:70}}>What is your Height?</Text>
         <View style={styles.KG}>
             <Button title='Ft' color='#63d4dd'  onPress={()=>navigation.navigate('FT')}></Button>
         </View>
@@ -58,7 +59,7 @@ const styles = StyleSheet.create({
         position:'absolute',
         width: 100,
         height:50,
-        marginTop:234,
+        marginTop:344,
         marginLeft:226,
         borderRadius:10,
         borderWidth: 2,

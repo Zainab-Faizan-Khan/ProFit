@@ -6,8 +6,9 @@ import { Checkbox } from 'react-native-paper';
 export default function Goal({navigation}){
     const [checked, setChecked] = React.useState(false);
     return(
-        <View style={{backgroundColor:'#d7edf0', height:800}}>
-        <Text style={{marginTop:70,marginLeft:76, fontSize:24,fontWeight:'bold',marginBottom:44}}>Please choose Your Goal</Text>
+        <View style={{backgroundColor:'#d7edf0', height:2000}}>
+         <Image source={require("../register/assetsregister/header.png")}  style={{ height:100, width: 150, marginTop:40,marginLeft:120}}/>
+        <Text style={{marginTop:36,marginLeft:76, fontSize:24,fontWeight:'bold',marginBottom:44}}>Please choose Your Goal</Text>
         
         <View style={{paddingLeft:60, backgroundColor:'#f6b1f0', height:100, paddingRight:100, borderRadius:30,marginTop:20}}>
             <Image source={require("./assetsregister/strong.jpg")} style={{width:100, height:100, marginLeft:205}}/>

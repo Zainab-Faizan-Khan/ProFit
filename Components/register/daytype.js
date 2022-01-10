@@ -5,8 +5,9 @@ import { RadioButton } from 'react-native-paper';
 export default function daytype({navigation}){
     const [checked, setChecked] = React.useState('first');
     return(
-        <View style={{backgroundColor:'#d7edf0', height:800}}>
-        <Text style={{marginTop:70,marginLeft:46, fontSize:20,fontWeight:'bold',marginBottom:44}}>What does your typical day look like?</Text>
+        <View style={{backgroundColor:'#d7edf0', height:2000}}>
+         <Image source={require("../register/assetsregister/header.png")}  style={{ height:100, width: 150, marginTop:40,marginLeft:120}}/>
+        <Text style={{marginTop:23,marginLeft:46, fontSize:20,fontWeight:'bold',marginBottom:44}}>What does your typical day look like?</Text>
         
         <View style={{paddingLeft:20}}>
             <Image source={require("./assetsregister/standing.jpg")} style={{width:170, height:230, borderWidth:2,borderColor:"black"}}/>

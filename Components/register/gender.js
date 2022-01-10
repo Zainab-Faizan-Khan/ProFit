@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Button, Text, View ,TextInput} from 'react-native';
+import {StyleSheet, Button, Text, View ,Image} from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { RadioButton } from 'react-native-paper';
 
@@ -9,8 +9,9 @@ import { RadioButton } from 'react-native-paper';
 export default function Gender({navigation}){
     const [checked, setChecked] = React.useState('first');
     return(
-        <View style={{backgroundColor:'#d7edf0', height:800}}>
-             <Text style={{marginTop:150,marginLeft:70, fontSize:24,fontWeight:'bold'}}>Please Select Your Gender</Text>
+        <View style={{backgroundColor:'white', height:2000}}>
+          <Image source={require("../register/assetsregister/header.png")}  style={{ height:100, width: 150, marginTop:40,marginLeft:120}}/>
+             <Text style={{marginTop:100,marginLeft:70, fontSize:24,fontWeight:'bold'}}>Please Select Your Gender</Text>
              <View style={{paddingLeft:70, position:'relative'}}>
              <Text style={{paddingTop:50, paddingLeft:-60, fontSize:20}}>Female</Text>
              <MaterialCommunityIcons name="gender-female" size={140} color="black" style={styles.female} />
@@ -21,7 +22,7 @@ export default function Gender({navigation}){
         style={styles.r1}
       />
       </View>
-      <View style={{ position:'absolute',paddingTop:235, paddingLeft:270}}>
+      <View style={{ position:'absolute',paddingTop:325, paddingLeft:270}}>
       <Text  style={{ fontSize:20,paddingLeft:-20}}>Male</Text>
       <MaterialCommunityIcons name="gender-male" size={140} color="black" style={styles.male} />
       <RadioButton

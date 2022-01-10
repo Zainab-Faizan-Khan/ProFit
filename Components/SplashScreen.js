@@ -39,7 +39,7 @@ export default function SplashScreen() {
                     startAnimation,
                     {
                         // For same Height for non safe Area Devices...
-                        toValue: -Dimensions.get('window').height + (edges.top + 65),
+                        toValue: -Dimensions.get('window').height + (edges.top -105),
                         useNativeDriver: true
                     }
                 ),

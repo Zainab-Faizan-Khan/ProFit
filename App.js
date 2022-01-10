@@ -20,7 +20,9 @@ import Diet from './Components/register/diet';
 import Goal from './Components/register/goal';
 import Main from './Components/main';
 import Login from './Components/login';
-
+import FP1 from './Components/FP1';
+import FP2 from './Components/FP2.js';
+import FP3 from './Components/FP3';
 
 const Stack = createStackNavigator();
 export default function App() {
@@ -28,22 +30,27 @@ export default function App() {
     <SafeAreaProvider>
       <SplashScreen/> 
     <NavigationContainer initialRouteName='Home'>
-    <Stack.Navigator>
-      <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="Start" component={Start} />
-      <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="Name" component={Name} />
-      <Stack.Screen name="Gender" component={Gender} />
-      <Stack.Screen name="Dob" component={Dob} />
-      <Stack.Screen name="KG" component={KG} />
-      <Stack.Screen name="FT" component={FT} />
-      <Stack.Screen name="LB" component={LB} />
-      <Stack.Screen name="CM" component={CM} />
-      <Stack.Screen name="Fitness" component={Fitness} />
-      <Stack.Screen name="daytype" component={daytype} />
-      <Stack.Screen name="Diet" component={Diet} />
-      <Stack.Screen name="Goal" component={Goal} />
-      <Stack.Screen name="Main" component={Main} />
+    <Stack.Navigator
+
+  >
+      <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
+      <Stack.Screen name="Start" component={Start} options={{ headerShown: false }}  />
+      <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+      <Stack.Screen name="Name" component={Name}  options={{ headerShown: false }} />
+      <Stack.Screen name="Gender" component={Gender} options={{ headerShown: false }}  />
+      <Stack.Screen name="Dob" component={Dob} options={{ headerShown: false }} />
+      <Stack.Screen name="KG" component={KG} options={{ headerShown: false }} />
+      <Stack.Screen name="FT" component={FT} options={{ headerShown: false }} />
+      <Stack.Screen name="LB" component={LB} options={{ headerShown: false }} />
+      <Stack.Screen name="CM" component={CM} options={{ headerShown: false }} />
+      <Stack.Screen name="Fitness" component={Fitness} options={{ headerShown: false }} />
+      <Stack.Screen name="daytype" component={daytype} options={{ headerShown: false }} />
+      <Stack.Screen name="Diet" component={Diet} options={{ headerShown: false }} />
+      <Stack.Screen name="Goal" component={Goal} options={{ headerShown: false }} />
+      <Stack.Screen name="Main" component={Main} options={{ headerShown: false }} />
+      <Stack.Screen name="FP1" component={FP1} options={{ headerShown: false }} />
+      <Stack.Screen name="FP2" component={FP2} options={{ headerShown: false }} />
+      <Stack.Screen name="FP3" component={FP3} options={{ headerShown: false }} />
      
 
     </Stack.Navigator>

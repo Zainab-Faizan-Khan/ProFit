@@ -1,12 +1,13 @@
 import React from 'react';
-import {StyleSheet, Button, Text, View,TextInput } from 'react-native';
+import {StyleSheet, Button, Text, View,TextInput ,Image} from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 
 export default function LB({navigation}){
     return(
-        <View style={{backgroundColor:'#d7edf0', height:800}}>
-        <Text style={{marginTop:130,marginLeft:60, fontSize:25,fontWeight:'bold',marginBottom:70}}>How much do you weigh?</Text>
+        <View style={{backgroundColor:'#d7edf0', height:2000}}>
+           <Image source={require("../register/assetsregister/header.png")}  style={{ height:100, width: 150, marginTop:40,marginLeft:120}}/>
+        <Text style={{marginTop:100,marginLeft:60, fontSize:25,fontWeight:'bold',marginBottom:70}}>How much do you weigh?</Text>
         <View style={styles.KG}>
             <Button title='KGs' color='#63d4dd'  onPress={()=>navigation.navigate('KG')}></Button>
         </View>
@@ -18,7 +19,7 @@ export default function LB({navigation}){
             <Text style={{position:"absolute", fontSize:20, marginLeft:130, marginTop:90, fontStyle:"italic"}}>Current Weight:</Text>
             <FontAwesome5 name="weight" size={24} color="grey" style={styles.fontkg}/>
             <TextInput style={{ fontSize: 20 , marginTop:130,marginLeft:110,borderBottomColor: '#b7b6c1',  
-                borderBottomWidth: 1,marginRight:110  }}      />
+                borderBottomWidth: 1,marginRight:110  }}     keyboardType='numeric'   />
                 <Text style={{position:"absolute", fontSize:15, marginLeft:300, marginTop:130}}>LBs</Text>
         </View>
         <View >
@@ -26,7 +27,7 @@ export default function LB({navigation}){
         <Text style={{position:"absolute", fontSize:20, marginLeft:130, marginTop:110, fontStyle:"italic"}}>Target Weight:</Text>
         <Feather name="target" size={24} color="red" style={styles.fonttarget}/>
         <TextInput style={{ fontSize: 20 , marginTop:160,marginLeft:110,borderBottomColor: '#b7b6c1',  
-            borderBottomWidth: 1,marginRight:110  }}      />
+            borderBottomWidth: 1,marginRight:110  }}   keyboardType='numeric'     />
             <Text style={{position:"absolute", fontSize:15, marginLeft:300, marginTop:160}}>LBs</Text>
     </View>
     <View style={styles.styleBtn1}>
@@ -67,7 +68,7 @@ const styles = StyleSheet.create({
         position:'absolute',
         width: 100,
         height:50,
-        marginTop:234,
+        marginTop:344,
         marginLeft:226,
         borderRadius:10,
         borderWidth: 2,

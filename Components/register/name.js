@@ -1,9 +1,10 @@
 import React from 'react';
-import {StyleSheet, Button, Text, View ,TextInput} from 'react-native';
+import {StyleSheet, Button, Text, View ,TextInput,Image} from 'react-native';
 
 export default function Name({navigation}){
     return(
-        <View style={{backgroundColor:'#d7edf0', height:800}}>
+        <View style={{backgroundColor:'white', height:1200}}>
+         <Image source={require("../register/assetsregister/header.png")}  style={{ height:100, width: 150, marginTop:40,marginLeft:120}}/>
         <Text style={{marginTop:70,marginLeft:76, fontSize:24,fontWeight:'bold',marginBottom:44}}>Please Enter Your Details</Text>
         <Text style={{marginTop:80,marginLeft:27, fontSize:20,fontWeight:'bold'}}>Name:</Text>
         <TextInput style={{ fontSize: 20 , marginTop:-32,marginLeft:150,borderBottomColor: 'grey',  
@@ -35,7 +36,7 @@ export default function Name({navigation}){
 }
 const styles = StyleSheet.create({
     styleBtn1: {
-      marginTop: 240,
+      marginTop: 200,
       marginLeft: 30,
       marginRight: 30,
       borderWidth: 2,

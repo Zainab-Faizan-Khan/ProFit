@@ -6,8 +6,9 @@ import { RadioButton } from 'react-native-paper';
 export default function Diet({navigation}){
     const [checked, setChecked] = React.useState('first');
     return(
-        <View style={{backgroundColor:'#d7edf0', height:800}}>
-        <Text style={{marginTop:70,marginLeft:76, fontSize:24,fontWeight:'bold',marginBottom:44}}>What is your diet type?</Text>
+        <View style={{backgroundColor:'#d7edf0', height:2000}}>
+         <Image source={require("../register/assetsregister/header.png")}  style={{ height:100, width: 150, marginTop:40,marginLeft:120}}/>
+        <Text style={{marginTop:30,marginLeft:76, fontSize:24,fontWeight:'bold',marginBottom:44}}>What is your diet type?</Text>
         
         <View style={{paddingLeft:60, backgroundColor:'#b9e36e', height:190, paddingRight:20, borderRadius:30}}>
             <Image source={require("./assetsregister/nonveg.jpg")} style={{width:180, height:140, marginTop:18, marginLeft:185}}/>

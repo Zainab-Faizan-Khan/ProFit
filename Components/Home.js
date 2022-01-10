@@ -11,10 +11,10 @@ export default function Home({navigation}) {
 
     return (
         
-        <View style={{backgroundColor:'#d7edf0'}} >
-       
+        <View style={{backgroundColor:'white'}} >
+        <Image source={require("../assets/headerlogo.png")}  style={{ height:100, width: 150, marginTop:20}}/>
         <Image source={require('../assets/girl.jpg')} 
-             style={{marginTop:100, height:300, width: 500
+             style={{marginTop:90, height:300, width: 500
         }}/>
         <Text style={{fontSize:25, paddingTop:75,paddingLeft:15,fontWeight:'bold'}}>Fitness AI</Text>
         <Text style={{fontSize:15, paddingTop:20,paddingLeft:15, color:'#929798'}}>A personalized training plan,built by your AI Coach. The AI optimizes set,reps and weight for each exercise every time you workout!</Text>
