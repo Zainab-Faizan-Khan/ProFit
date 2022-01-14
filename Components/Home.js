@@ -1,24 +1,27 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Image, Text, View,StyleSheet } from 'react-native';
+import { Image, Text, View,StyleSheet, Dimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { AntDesign } from '@expo/vector-icons';
-
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 export default function Home({navigation}) {
     const edges = useSafeAreaInsets();
-
+    const {widthPercentageToDP, heightPercentageToDP} = Dimensions.get('screen');
     return (
         
-        <View style={{backgroundColor:'white'}} >
-        <Image source={require("../assets/headerlogo.png")}  style={{ height:100, width: 150, marginTop:20}}/>
+        <View style={{backgroundColor:'white', flex:1}} >
+        <Image source={require("../assets/headerlogo.png")}  style={{width: wp(25),
+        height: hp(15),marginLeft:10}}/>
         <Image source={require('../assets/girl.jpg')} 
-             style={{marginTop:90, height:300, width: 500
+             style={{ width: wp(100),
+        height: hp(40), marginTop:hp('5%')
         }}/>
-        <Text style={{fontSize:25, paddingTop:75,paddingLeft:15,fontWeight:'bold'}}>Fitness AI</Text>
-        <Text style={{fontSize:15, paddingTop:20,paddingLeft:15, color:'#929798'}}>A personalized training plan,built by your AI Coach. The AI optimizes set,reps and weight for each exercise every time you workout!</Text>
-        <AntDesign style={{marginLeft:365, paddingTop:139, paddingBottom:19}}name="right" size={24} color="grey" onPress={()=>navigation.navigate('Start')}/>
+        <Text style={{fontSize:wp('7%'),fontWeight:'bold'}}>Fitness AI</Text>
+        <Text style={{fontSize:wp('4%') ,color:'#929798'}}>A personalized training plan,built by your AI Coach. The AI optimizes set,reps and weight for each exercise every time you workout!</Text>
+        <View>
+        <AntDesign style={{ marginLeft:wp('90%'),paddingTop:89}}name="right" size={24} color="grey" onPress={()=>navigation.navigate('Start')}/></View>
         </View>
     );
 }

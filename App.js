@@ -9,7 +9,6 @@ import Home from './Components/Home';
 import Start from './Components/Start';
 import Name from './Components/register/name';
 import Gender from './Components/register/gender';
-import Dob from './Components/register/dob';
 import KG from './Components/register/weightKg';
 import FT from './Components/register/heightft';
 import LB from './Components/register/weightLb';
@@ -23,6 +22,13 @@ import Login from './Components/login';
 import FP1 from './Components/FP1';
 import FP2 from './Components/FP2.js';
 import FP3 from './Components/FP3';
+import pro from './Components/profile';
+import Exercise1 from './Components/Exercise1';
+import Exercise2 from './Components/Exercise2';
+import Exercise3 from './Components/Exercise3';
+import Feedback from './Components/feedback';
+import EA from './Components/exerciseAll';
+
 
 const Stack = createStackNavigator();
 export default function App() {
@@ -38,7 +44,7 @@ export default function App() {
       <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
       <Stack.Screen name="Name" component={Name}  options={{ headerShown: false }} />
       <Stack.Screen name="Gender" component={Gender} options={{ headerShown: false }}  />
-      <Stack.Screen name="Dob" component={Dob} options={{ headerShown: false }} />
+     
       <Stack.Screen name="KG" component={KG} options={{ headerShown: false }} />
       <Stack.Screen name="FT" component={FT} options={{ headerShown: false }} />
       <Stack.Screen name="LB" component={LB} options={{ headerShown: false }} />
@@ -51,6 +57,13 @@ export default function App() {
       <Stack.Screen name="FP1" component={FP1} options={{ headerShown: false }} />
       <Stack.Screen name="FP2" component={FP2} options={{ headerShown: false }} />
       <Stack.Screen name="FP3" component={FP3} options={{ headerShown: false }} />
+      <Stack.Screen name="pro" component={pro} options={{ headerShown: false }} />
+    
+      <Stack.Screen name="Exercise1" component={Exercise1} options={{ headerShown: false }} />
+      <Stack.Screen name="Exercise2" component={Exercise2} options={{ headerShown: false }} />
+      <Stack.Screen name="Exercise3" component={Exercise3} options={{ headerShown: false }} />
+      <Stack.Screen name="Feedback" component={Feedback} options={{ headerShown: false }} />
+      <Stack.Screen name="EA" component={EA} options={{ headerShown: false }} />
      
 
     </Stack.Navigator>

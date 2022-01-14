@@ -2,9 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import {StyleSheet, Button, Image, Text, View ,TouchableOpacity} from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-
-
-
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 export default function Start({navigation}) {
 
@@ -13,11 +11,11 @@ export default function Start({navigation}) {
     return (
       
         <View style={{backgroundColor:'white',height:1000}}>
-        <Image source={require("../assets/headerlogo.png")}  style={{ height:100, width: 150, marginTop:20}}/>
+        <Image source={require("../assets/headerlogo.png")}  style={{ height:100, width: 150, marginTop:hp('1%')}}/>
         <Image source={require('../assets/guy.jpg')} 
-             style={{marginTop:30, height:400, width:410
+             style={{marginTop:hp('2'), height:hp('60'), width:wp('100%')
         }}/>
-        <Text style={{fontSize:25, paddingTop:36,paddingLeft:15,fontWeight:'bold'}}>The Ultimate Diet Plan</Text>
+        <Text style={{fontSize:wp('5%'),fontWeight:'bold'}}>The Ultimate Diet Plan</Text>
         <Text style={{fontSize:15,paddingTop:24,paddingLeft:15, color:'#929798'}}>ProFit serves as a resuorse and highlight the nutrient rich food that one should incorporate in their daily gym diet plan</Text>
         <View style={styles.styleBtn1}>
           <Button
@@ -38,7 +36,7 @@ export default function Start({navigation}) {
 }
 const styles = StyleSheet.create({
     styleBtn1: {
-      marginTop: 28,
+      marginTop: hp('1'),
       marginLeft: 30,
       marginRight: 30,
       borderWidth: 2,
