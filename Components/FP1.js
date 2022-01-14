@@ -1,9 +1,58 @@
-import React from 'react';
-import {StyleSheet, Button, Text, View ,TextInput,Image} from 'react-native';
+import React , {useState , Component} from 'react';
+import {StyleSheet, Button, Text, View ,TextInput,Image , Linking, Alert} from 'react-native';
+import qs from 'qs';
+import firebase from '../firebase';
+
 
 
 export default function FP1({navigation}){
-    const [text, onChangeText] = React.useState();
+
+/*async function sendEmail(to,subject,body){
+let url = `mailto:${to}`;
+
+    // Create email link query
+    const query = qs.stringify({
+        subject: subject,
+        body: body,
+    });
+
+    if (query.length) {
+        url += `?${query}`;
+    }
+    const canOpen = await Linking.canOpenURL(url);
+
+    if (!canOpen) {
+        Alert.alert('Provided URL can not be handled');
+    }
+
+    return Linking.openURL(url);
+}
+*/ 
+ 
+    const [otpaddress,setotpaddress]=React.useState(null)
+   
+  function GenerateRandomNumber()
+{
+
+ 
+
+if (otpaddress==null){Alert.alert('Enter your email address')}
+else{
+
+navigation.navigate('Login')
+
+
+firebase.auth.sendPasswordResetEmail(otpaddress).then(()=>{console.log('sent!');navigation.navigate('Login')})
+.catch((err)=>{console.log(err.message)})
+
+  
+}
+
+
+}
+
+ 
+    const [textmail, onChangeText] = React.useState();
     return(
         <View style={{backgroundColor:'white', height:1200}}>
         <Image source={require("../assets/headerlogo.png")}  style={{ height:100, width: 150, marginTop:60, marginLeft:120}}/>
@@ -13,8 +62,8 @@ export default function FP1({navigation}){
         <Text style={{marginLeft:75, marginTop:-40, fontSize:9, color:"grey"}}>Enter your email address below to reset your Password</Text>
         <TextInput
         style={styles.input}
-        onChangeText={onChangeText}
-        value={text}
+        onChangeText={setotpaddress}
+        value={otpaddress}
         placeholder='Enter Email'
         placeholderTextColor="white"
     
@@ -33,7 +82,7 @@ export default function FP1({navigation}){
           <Button
             color="#5fa0b8" //button color
              title="Send"
-             onPress={()=>navigation.navigate('FP2')}
+             onPress={ GenerateRandomNumber }
              
           />
         </View>

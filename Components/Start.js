@@ -21,7 +21,7 @@ export default function Start({navigation}) {
           <Button
             color="#85bec5" //button color
              title="Get Started"
-             onPress={()=>navigation.navigate('Name')}
+             onPress={()=>navigation.navigate('SignUp')}
           />
         </View>
         <View  style={styles.styleBtn2}>

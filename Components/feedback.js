@@ -22,13 +22,14 @@ export default function Feedback({ navigation }) {
   const [email, setEmail] = useState("");
   return (
     <View style={{ backgroundColor: "#d7edf0", height: 2000 }}>
+  <KeyboardAvoidingView behavior="position">
       <Image
         source={require("../assets/headerlogo.png")}
         style={{ height: 100, width: 150, marginTop: 40, marginLeft: 120 }}
       />
       <Text
         style={{
-          marginTop: 30,
+          marginTop: 20,
           marginLeft: 100,
           fontSize: 24,
           fontWeight: "bold",
@@ -170,7 +171,7 @@ export default function Feedback({ navigation }) {
             style={{
               marginTop:hp('2%'),
               fontSize: 20,
-           
+              
               fontStyle: "italic",
               color:"black",
               marginLeft:57
@@ -179,14 +180,14 @@ export default function Feedback({ navigation }) {
             Need Help
           </Text>
           <Entypo name="help-with-circle" size={24} color="black" style={{
-              marginTop:hp('-3%'),marginLeft:wp('37%')}}/>
+              marginTop:hp('-3%'),marginLeft:wp('43%')}}/>
           </TouchableOpacity>
           
         </View>
       </View>
    
 
-      <KeyboardAvoidingView behavior="position"
+      <View
         style={{
           height: hp("44%"),
           backgroundColor: "#adccdb",
@@ -198,7 +199,7 @@ export default function Feedback({ navigation }) {
           borderColor: "#598094",
           borderTopLeftRadius: 3,
           borderTopWidth: 5,
-          borderBottomWidth: 20,
+          borderBottomWidth: 10,
           borderBottomEndRadius: 72,
         }}
       >
@@ -245,7 +246,7 @@ export default function Feedback({ navigation }) {
               value={email}
               onChangeText={(text) => setEmail(text)}
               mode="outlined"
-              placeholder="Enter Email"
+              placeholder="  Enter Email"
             />
             <MaterialIcons
               name="email"
@@ -274,7 +275,7 @@ export default function Feedback({ navigation }) {
               value={email}
               onChangeText={(text) => setEmail(text)}
               mode="outlined"
-              placeholder="Enter Feedback"
+              placeholder="  Enter Feedback"
             />
             <AntDesign name="message1"  size={28}
               color="#598094"
@@ -283,7 +284,8 @@ export default function Feedback({ navigation }) {
            <View style={styles.styleBtn1}> 
             <TouchableOpacity ><Text style={{fontSize:15,fontWeight:"bold"}}>Post!</Text></TouchableOpacity>
            </View>
-          </KeyboardAvoidingView>
+          </View>
+</KeyboardAvoidingView>
     </View>
   );
 }
