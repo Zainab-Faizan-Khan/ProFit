@@ -27,7 +27,7 @@ export default class Circle extends Component {
       Animated.loop(
         Animated.timing(this.animated, {
             toValue: 1,
-            duration: 9000,
+            duration: 14000,
             useNativeDriver: true,
             easing: Easing.linear,
         }),
@@ -50,20 +50,20 @@ export default class Circle extends Component {
  const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginLeft: wp("30%"),
-        marginRight: wp("30%"),
-        marginTop:hp('10%')
+        marginLeft: wp("10%"),
+        marginRight: wp("70%"),
+        marginTop:hp('4%')
        
     },
     item: {
         
-        width: 168,
-        height: 260, // this is the diameter of circle
+        width: 80,
+        height: 140, // this is the diameter of circle
         
     },
     dot: {
         width: '100%',
-        height: 180,
+        height: 100,
         backgroundColor: 'transparent',
         position: 'absolute',
         alignItems: 'center',

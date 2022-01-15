@@ -4,7 +4,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 // Logo....
 import Logo from '../assets/headerlogo.png';
-import Home from './Home';
+import Start from './Start';
 
 const BGColor = "#d7edf0"
 
@@ -162,7 +162,7 @@ export default function SplashScreen() {
                 ]
             }}>
 
-                <Home></Home>
+                <Start></Start>
 
             </Animated.View>
 

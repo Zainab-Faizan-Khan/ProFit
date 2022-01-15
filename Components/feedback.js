@@ -286,7 +286,31 @@ export default function Feedback({ navigation }) {
            </View>
           </View>
 </KeyboardAvoidingView>
+      <View
+        style={{
+          height: 200,
+          width: wp('100%'),
+          backgroundColor: "transparent",
+          borderRadius: 80,
+          
+          borderLeftWidth:20,
+          borderRightWidth:20,
+          borderTopWidth:5,
+          marginBottom:0,
+          marginTop: hp('99%'),
+          position: "absolute",
+          borderColor:'#598094'
+        }}
+      >
+      <Entypo name="new-message" size={30} color="black"  style={{ alignItems:"center", marginLeft:105,marginTop:hp('1%')}}  onPress={()=>navigation.navigate('Feedback')} />
+      <AntDesign name="home" size={30} color="black" style={{ alignItems:"center", marginLeft:175,marginTop:hp('-3.7%')}}  onPress={()=>navigation.navigate('Main')}/>
+      <AntDesign name="book" size={30} color="black" style={{ alignItems:"center", marginLeft:245,marginTop:hp('-3.7%')}} onPress={()=>navigation.navigate('EA')}/>  
+      </View> 
+    
+     
+    
     </View>
+    
   );
 }
 const styles = StyleSheet.create({

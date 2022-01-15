@@ -12,11 +12,11 @@ export default function Start({navigation}) {
       
         <View style={{backgroundColor:'white',height:1000}}>
         <Image source={require("../assets/headerlogo.png")}  style={{ height:100, width: 150, marginTop:hp('1%')}}/>
-        <Image source={require('../assets/guy.jpg')} 
+        <Image source={require('../assets/girl.jpg')} 
              style={{marginTop:hp('2'), height:hp('60'), width:wp('100%')
         }}/>
-        <Text style={{fontSize:wp('5%'),fontWeight:'bold'}}>The Ultimate Diet Plan</Text>
-        <Text style={{fontSize:15,paddingTop:24,paddingLeft:15, color:'#929798'}}>ProFit serves as a resuorse and highlight the nutrient rich food that one should incorporate in their daily gym diet plan</Text>
+        <Text style={{fontSize:wp('7%'),fontWeight:'bold', marginLeft:20,marginTop:20}}>Fitness AI</Text>
+        <Text style={{fontSize:15, color:'#929798',marginLeft:20}}>A personalized training plan,built by your AI Coach. The AI optimizes set,reps and weight for each exercise every time you workout!</Text>
         <View style={styles.styleBtn1}>
           <Button
             color="#85bec5" //button color
@@ -36,14 +36,13 @@ export default function Start({navigation}) {
 }
 const styles = StyleSheet.create({
     styleBtn1: {
-      marginTop: hp('1'),
+      marginTop: hp('3'),
       marginLeft: 30,
       marginRight: 30,
       borderWidth: 2,
       borderRadius: 10,
       borderColor: "#86bac1", //button background/border color
-      overflow: "hidden",
-      marginBottom: 10,
+      overflow: "hidden"
     },
     styleBtn2: {
         

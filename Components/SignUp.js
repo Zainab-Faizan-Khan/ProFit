@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Text, View,StyleSheet,Button ,TextInput,Image, Alert,useState,Checkbox} from 'react-native';
+import {Text, View,StyleSheet,Button ,TextInput,Image, Alert,useState,Checkbox,ImageBackground} from 'react-native';
 import Carousel from 'pinar';
 import * as Yup from 'yup'
 import { Formik } from 'formik';
@@ -59,7 +59,8 @@ if(uname==null){setinvalid(true)}
     return(
 < >
 <View style={
-{ flex: 1, flexDirection:'column', justifyContent: 'center',height:1000,position:'absolute' }}>
+{ flex: 1, flexDirection:'column', justifyContent: 'center',height:1000,position:'absolute',backgroundColor:'black',width:1000 }}>
+ <ImageBackground source={require("../assets/signup.jpeg")} style={styles.image}></ImageBackground>
 <>
     <Image source={require("../assets/headerlogo.png")}  style={{ marginTop:-750,marginLeft:110,height:190,width:180}}/>
     {invalid&& <View><Text style={{color:"red", marginTop:-75,marginLeft:110,fontSize:15}}>* Required fields are invalid.</Text></View>}</>
@@ -68,38 +69,39 @@ if(uname==null){setinvalid(true)}
 
     
       <>
+    
 <View style={styles.slide}>
-            <Text style={{marginTop:70,marginLeft:86, fontSize:24,fontWeight:'bold',marginBottom:44}}>Account Details</Text>
-            <Text style={{marginTop:40,marginLeft:27, fontSize:20,fontWeight:'bold'}}>Email:</Text>
+            <Text style={{marginTop:70, fontSize:24,fontWeight:'bold',marginBottom:44,textAlign:'center',color:'#7aa0b4'}}>ACCOUNT DETAILS</Text>
+            <Text style={{marginTop:40,marginLeft:27, fontSize:19,fontWeight:'bold',color:'black'}}>Email:</Text>
             <TextInput 
-                style={{ fontSize: 20 , marginTop:-32,marginLeft:150,borderBottomColor: 'grey',  
+                style={{ fontSize: 15 , marginTop:-32,marginLeft:150,borderBottomColor: 'grey',  
                 borderBottomWidth:2, marginRight:28 }} 
                 onChangeText={setemail}
                 value={email}
                 placeholder='Enter Email'
-                placeholderTextColor="white"
+                placeholderTextColor="grey"
                 keyboardType='email-address'     
                     />
                 {inevalid && <View><Text style={{fontSize:10,marginLeft:190,color:"blue",marginTop:10}}>This field is required</Text></View>}
-            <Text style={{marginTop:40,marginLeft:27, fontSize:20,fontWeight:'bold'}}>UserName:</Text>
-            <TextInput style={{ fontSize: 20 , marginTop:-32,marginLeft:150,borderBottomColor: 'grey',  
+            <Text style={{marginTop:40,marginLeft:27, fontSize:19,fontWeight:'bold'}}>UserName:</Text>
+            <TextInput style={{ fontSize: 15 , marginTop:-32,marginLeft:150,borderBottomColor: 'grey',  
                 borderBottomWidth:2, marginRight:28 }}
                 onChangeText={setuname}
                 value={uname}
                 placeholder='Enter Your Name'
-                placeholderTextColor="white"
+                placeholderTextColor="grey"
                     />
              {invalid && <View><Text style={{fontSize:10,marginLeft:190,color:"blue",marginTop:10}}>This field is required</Text></View>}
-            <Text style={{marginTop:40,marginLeft:27, fontSize:20,fontWeight:'bold'}}>Password:</Text>
-            <TextInput style={{ fontSize: 20 , marginTop:-32,marginLeft:150,borderBottomColor: 'grey',  
+            <Text style={{marginTop:40,marginLeft:27, fontSize:19,fontWeight:'bold'}}>Password:</Text>
+            <TextInput style={{ fontSize: 15 , marginTop:-32,marginLeft:150,borderBottomColor: 'grey',  
                 borderBottomWidth:2, marginRight:28}}  
                 onChangeText={setpw}
                 value={pw}
                 placeholder='Enter Password'
-                placeholderTextColor="white"
+                placeholderTextColor="grey"
                 secureTextEntry={true}
                     />
-            <Text style={{fontSize:10,marginLeft:140,color:"blue",marginTop:10}}>Password should be min 8 characters long</Text>
+            <Text style={{fontSize:10,marginLeft:135,color:'#7aa0b4',marginTop:10}}>Password should be min 8 characters long</Text>
 
 </View>
 
@@ -107,30 +109,32 @@ if(uname==null){setinvalid(true)}
 <>
 <View style={styles.slide}>
 
-            <Text style={{marginTop:70,marginLeft:126, fontSize:24,fontWeight:'bold',marginBottom:34}}>Gender</Text>
-            <View style={{paddingLeft:22, position:'relative' ,borderColor:"black",borderRadius:10,borderWidth:2,width:140,marginLeft:25}}>
-                <Text style={{paddingTop:20, paddingLeft:15, fontSize:20}}>Female</Text>
+            <Text style={{marginTop:65,marginLeft:126, fontSize:24,fontWeight:'bold',marginBottom:34,color:'#7aa0b4'}}>GENDER</Text>
+            <View style={{paddingLeft:22, position:'relative' ,borderColor:"#7aa0b4",borderRadius:20,borderWidth:4,width:133,marginLeft:17}}>
+                <Text style={{fontSize:20,textAlign:"center", marginLeft:-20,marginTop:10}}>Female</Text>
                 <MaterialCommunityIcons name="gender-female" size={100} color="black" style={styles.female} />
                 <RadioButton
                     value="first"
                     status={ checked === 'female' ? 'checked' : 'unchecked' }
                     onPress={() => setChecked('female')}
                     style={styles.r1}
+                    
                 />
             </View>
 
-            <View style={{ position:'relative',paddingTop:0, paddingLeft:22,borderRadius:10,borderWidth:2,width:140,marginTop:-190,marginLeft:190}}>
-                <Text  style={{ fontSize:20,paddingLeft:15,paddingTop:20}}>Male</Text>
+            <View style={{ position:'relative',borderRadius:20,borderWidth:4,width:140,marginTop:-180,marginLeft:177,borderColor:'#7aa0b4'}}>
+                <Text  style={{ fontSize:20,paddingLeft:44,marginTop:8}}>Male</Text>
                 <MaterialCommunityIcons name="gender-male" size={100} color="black" style={styles.male} />
                 <RadioButton
                     value="second"
                     status={ checked === 'male' ? 'checked' : 'unchecked' }
                     onPress={() => setChecked('male')}
+                    style={styles.r1}
                 />
             </View>
 
-            <View style={{paddingLeft:20, paddingTop:50,borderRadius:10,borderWidth:2,width:150,marginTop:20,marginLeft:90,height:170}}>
-                <Text style={{fontSize:20}}>Other</Text>
+            <View style={{paddingLeft:50, paddingTop:50,width:140,marginTop:20,marginLeft:90,height:170}}>
+                <Text style={{fontSize:20,fontWeight:"bold"}}>Other</Text>
                 <RadioButton
                     value="third"
                     status={ checked === 'other' ? 'checked' : 'unchecked' }
@@ -146,7 +150,7 @@ if(uname==null){setinvalid(true)}
 
 <>
 <View style={styles.slide}>
-            <Text style={{marginTop:70,marginLeft:35, fontSize:24,fontWeight:'bold',marginBottom:15}}>How much do you weigh?</Text>           
+            <Text style={{marginTop:70,marginLeft:35, fontSize:20,fontWeight:'bold',marginBottom:15,color:'#7aa0b4'}}>HOW MUCH DO YOU WEIGH?</Text>           
             <View >
         
                 <Text style={{position:"absolute", fontSize:20, marginLeft:50, fontStyle:"italic", marginTop:70}}>Current Weight:</Text>
@@ -178,14 +182,14 @@ if(uname==null){setinvalid(true)}
 
 <>
 <View style={styles.slide}>
-            <Text style={{marginTop:70,marginLeft:35, fontSize:24,fontWeight:'bold',marginBottom:15}}>What is your Fitness level?</Text>  
-            <Text style={{marginTop:20,marginLeft:35,color:"white", fontSize:15,marginBottom:70}}>Select an option that closely matches you</Text>
+            <Text style={{marginTop:70,textAlign:"center",fontSize:20,fontWeight:'bold',marginBottom:15,color:'#7aa0b4'}}>WHAT IS YOUR FITNESS LEVEL?</Text>  
+            <Text style={{marginTop:20,textAlign:"center",color:"black", fontSize:12,marginBottom:70,fontStyle:"italic"}}>Select an option that closely matches you</Text>
             
-            <View style={{paddingLeft:18}}>
+            <View style={{paddingLeft:10}}>
                 <Text style={{position:'absolute',marginLeft:30}}>Poor</Text>
                 <Text style={{position:'absolute',marginLeft:120}}>Fair</Text>
                 <Text style={{position:'absolute',marginLeft:200}}>Good</Text>
-                <Text style={{position:'absolute',marginLeft:280}}>Excellent</Text>
+                <Text style={{position:'absolute',marginLeft:280}}>Excel</Text>
                 <Slider
                     style={{width: 330, height: 40, marginTop:10}}
                     minimumValue={0}
@@ -195,11 +199,11 @@ if(uname==null){setinvalid(true)}
                     />
             </View>
 
-            <Text style={{marginTop:40,marginLeft:65, fontSize:24,fontWeight:'bold'}}>What is your Height?</Text>           
+            <Text style={{marginTop:33,textAlign:"center", fontSize:20,fontWeight:'bold',color:'#7aa0b4'}}>WHAT IS YOUR HEIGHT?</Text>           
             <View >
         
                 <Text style={{position:"absolute", fontSize:20, marginLeft:50, fontStyle:"italic", marginTop:50}}>Current Height:</Text>
-                <FontAwesome5 name="weight" size={24} color="blue" style={styles.fontkg}/>
+                <MaterialCommunityIcons name="human-male-height" size={27} color="#93ec3e" style={styles.fontkg} />
                 <TextInput style={{ fontSize: 20 , marginTop:130,marginLeft:110,borderBottomColor: '#b7b6c1',  
                     borderBottomWidth: 1,marginRight:110  }}  keyboardType='numeric'  
                 onChangeText={setheight}
@@ -213,9 +217,9 @@ if(uname==null){setinvalid(true)}
 </>  
 <>
 <View style={styles.slide}>
-           <Text style={{marginTop:70,marginLeft:75, fontSize:24,fontWeight:'bold',marginBottom:15}}>What is your Goal?</Text>      
-            <View style={{paddingLeft:60, backgroundColor:'#f6b1f0', height:100, paddingRight:20, borderRadius:10,marginTop:20,marginLeft:10,width:330}}>
-                <Image source={require("./register/assetsregister/strong.jpg")} style={{width:100, height:100, marginLeft:150}}/>
+           <Text style={{marginTop:70, fontSize:20,fontWeight:'bold',marginBottom:15, color:'#7aa0b4',textAlign:"center"}}>WHAT IS YOUR GOAL?</Text>      
+            <View style={{paddingLeft:60, backgroundColor:'#f6b1f0', height:100, paddingRight:20, borderRadius:10,marginTop:20,marginLeft:10,width:313}}>
+                <Image source={require("./register/assetsregister/strong.jpg")} style={{width:80, height:100, marginLeft:150}}/>
                 <Text style={{position:'absolute',marginLeft:60, marginTop:28, fontSize:20, fontStyle:'italic',fontWeight:'bold'}}>Get Stronger</Text>
                 <Text style={{position:'absolute',marginLeft:60, marginTop:58, fontSize:10, fontStyle:'italic'}}>Touch up and get in better shape</Text>
                 <View style={{ position:'absolute',marginTop:30, marginLeft:20}}>
@@ -227,7 +231,7 @@ if(uname==null){setinvalid(true)}
                 </View>
             </View>
 
-            <View style={{paddingLeft:60, backgroundColor:'#e0eca1', height:100, paddingRight:20, borderRadius:10,marginTop:20,marginLeft:10,width:330,overflow:'hidden'}}>
+            <View style={{paddingLeft:60, backgroundColor:'#e0eca1', height:100, paddingRight:20, borderRadius:10,marginTop:20,marginLeft:10,width:313,overflow:'hidden'}}>
                 <Image source={require("./register/assetsregister/weight.jpg")} style={{width:190, height:100, marginLeft:80}}/>
                 <Text style={{position:'absolute',marginLeft:60, marginTop:28, fontSize:20, fontStyle:'italic',fontWeight:'bold'}}>Loose Weight</Text>
                 <Text style={{position:'absolute',marginLeft:60, marginTop:58, fontSize:10, fontStyle:'italic'}}>Get lean fast& healthy </Text>
@@ -240,7 +244,7 @@ if(uname==null){setinvalid(true)}
                 </View>
             </View>
 
-            <View style={{paddingLeft:60, backgroundColor:'#d1cbe1', height:100, paddingRight:20, borderRadius:10,marginTop:20,marginLeft:10,width:330,overflow:'hidden'}}>
+            <View style={{paddingLeft:60, backgroundColor:'#d1cbe1', height:100, paddingRight:20, borderRadius:10,marginTop:20,marginLeft:10,width:313,overflow:'hidden'}}>
                 <Image source={require("./register/assetsregister/fitt.jpg")} style={{width:140, height:80, marginLeft:140, marginTop:15}}/>
                 <Text style={{position:'absolute',marginLeft:60, marginTop:28, fontSize:20, fontStyle:'italic',fontWeight:'bold'}}>Keep Fit</Text>
                 <Text style={{position:'absolute',marginLeft:60, marginTop:58, fontSize:10, fontStyle:'italic'}}>Stay fit and healthy</Text>
@@ -257,9 +261,9 @@ if(uname==null){setinvalid(true)}
 </>  
 <>
 <View style={styles.slide}>
-            <Text style={{marginTop:70,marginLeft:75, fontSize:24,fontWeight:'bold',marginBottom:55}}>Select Your Diet Type?</Text>
-             <View style={{paddingLeft:40, backgroundColor:'#b9e36e', height:130, paddingRight:20, borderRadius:10,marginLeft:20,width:320}}>
-            <Image source={require("./register/assetsregister/nonveg.jpg")} style={{width:180, height:100, marginTop:18, marginLeft:95}}/>
+            <Text style={{marginTop:70, fontSize:20,fontWeight:'bold',marginBottom:50,color:"#7aa0b4",textAlign:"center"}}>SELECT YOUR DIET TYPE?</Text>
+             <View style={{paddingLeft:40, backgroundColor:'#b9e36e', height:130, paddingRight:20, borderRadius:10,marginLeft:20,width:300}}>
+            <Image source={require("./register/assetsregister/nonveg.jpg")} style={{width:160, height:100, marginTop:18, marginLeft:95}}/>
             <Text style={{position:'absolute',marginLeft:40, marginTop:28, fontSize:20, fontStyle:'italic',fontWeight:'bold'}}>STANDARD</Text>
             <Text style={{position:'absolute',marginLeft:70, marginTop:58, fontSize:10, fontStyle:'italic'}}>All kind of food</Text>
             <View style={{marginTop:-70,marginLeft:-10}}>
@@ -271,10 +275,10 @@ if(uname==null){setinvalid(true)}
                 />
             </View>
         </View>
-        <View style={{paddingLeft:40, backgroundColor:'#b2ebf0', height:130, paddingRight:20, borderRadius:10,marginLeft:20,width:320,marginTop:50,overflow:'hidden'}}>
+        <View style={{paddingLeft:40, backgroundColor:'#b2ebf0', height:130, paddingRight:20, borderRadius:10,marginLeft:20,width:300,marginTop:27,overflow:'hidden'}}>
             <Image source={require("./register/assetsregister/veg.jpg")} style={{width:180, height:100, marginTop:10, marginLeft:110}}/>
             <Text style={{position:'absolute',marginLeft:30, marginTop:30, fontSize:20, fontStyle:'italic',fontWeight:'bold'}}>VEGETARIAN</Text>
-            <Text style={{position:'absolute',marginLeft:270, marginTop:60, fontSize:10, fontStyle:'italic'}}>Meat-free or Fish-free food</Text>
+            <Text style={{position:'absolute',marginLeft:70, marginTop:70, fontSize:10, fontStyle:'italic',color:"black"}}>Meat-free or Fish-free</Text>
             <View style={{marginTop:-50,marginLeft:-10}}> 
                 <RadioButton
                     value="veg"
@@ -289,7 +293,7 @@ if(uname==null){setinvalid(true)}
             <View style={styles.styleBtn1}>
             <Button
             color="#85bec5" //button color
-            title="Next"
+            title="SignUp"
             onPress={onsignup}
              />
             </View>      
@@ -306,20 +310,23 @@ const styles=StyleSheet.create({
 
 slide:{
       flex:0,
-      height:570,
+      height:530,
       width:355,
-      backgroundColor:"red",
-      marginLeft:20,
+      backgroundColor:"#d7edf0",
+      marginLeft:30,
       marginTop:170,
       marginRight:10,
-      borderRadius:15
+      borderRadius:35,
+      borderWidth:10,
+      borderColor:"#7aa0b4"
+     
 
 },
 
 styleBtn1: {
       position:'absolute',
-      marginTop: 500,
-      marginLeft: 204,
+      marginTop: 460,
+      marginLeft: 170,
       borderWidth: 2,
       borderRadius: 10,
       borderColor: "#86bac1", //button background/border color
@@ -352,6 +359,27 @@ fonttarget:{
     position:'absolute',
     marginTop:140,
     marginLeft:70
+},
+image: {
+    flex: 1,
+    justifyContent: "center",
+    opacity: 500,
+    width: 410,
+    height: 780,
+    opacity: 1.8,
+    marginTop: 40,
+  },
+female:{
+    
+    marginLeft:-10
+},
+male:{
+    marginLeft:15
+},
+r1:{
+   marginLeft:20
 }
-
 })
+
+
+

@@ -8,6 +8,7 @@ import {
   SafeAreaView,
   ScrollView,
   Image,
+  FlatList,
 } from "react-native";
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -31,7 +32,7 @@ export default function Main({ navigation }) {
         size={34}
         color="black"
         style={{ marginTop: 100, marginLeft: 350 }}
-        onPress={() => navigation.navigate("pro")}
+        onPress={() => navigation.navigate("Sidenav")}
       />
       <Text
         style={{
@@ -42,7 +43,7 @@ export default function Main({ navigation }) {
           fontWeight: "bold",
         }}
       >
-        CHALLENGES
+        Hello! Zainab
       </Text>
       <ScrollView horizontal={true} style={{ marginTop: -15 }}>
         <View
@@ -54,7 +55,9 @@ export default function Main({ navigation }) {
             borderRadius: 25,
             marginTop: 33,
           }}
-        ></View>
+        >
+           <Text style={{textAlign:"center", marginTop:hp('4%'),fontSize:20,fontWeight:"bold"}}>On Going Exercise</Text>
+        </View>
         <View
           style={{
             height: 180,
@@ -64,7 +67,9 @@ export default function Main({ navigation }) {
             borderRadius: 25,
             marginTop: 33,
           }}
-        ></View>
+        >
+          <Text style={{textAlign:"center", marginTop:hp('4%'),fontSize:20,fontWeight:"bold"}}>BMI</Text>
+        </View>
         <View
           style={{
             height: 180,
@@ -75,7 +80,19 @@ export default function Main({ navigation }) {
             marginRight: 20,
             marginTop: 33,
           }}
-        ></View>
+        >
+           <Text style={{textAlign:"center", marginTop:hp('4%'),fontSize:20,fontWeight:"bold"}}>Daily Reminders</Text>
+           <FlatList style={{textAlign:'center',marginLeft:10,marginTop:10}}
+            data={[
+              { key: "1. Drink Water" },
+              { key: "2. Make a plan and set realistic goals" },
+              { key: "3. Eat Healthy" },
+            ]}
+            renderItem={({ item }) => (
+              <Text style={styles.item}>{item.key}</Text>
+            )}
+          />
+        </View>
       </ScrollView>
       <View
         style={{
@@ -163,18 +180,19 @@ export default function Main({ navigation }) {
         style={{
           height: 200,
           width: wp('100%'),
-          backgroundColor: "#ea9296",
-          borderRadius: 25,
-          borderTopRightRadius:120,
-          borderTopLeftRadius:120,
-          borderLeftWidth:10,
-          borderRightWidth:10,
+          backgroundColor: "transparent",
+          borderRadius: 80,
+          
+          borderLeftWidth:20,
+          borderRightWidth:20,
+          borderTopWidth:5,
           marginBottom:0,
           marginTop: hp('99%'),
           position: "absolute",
+          borderColor:'#598094'
         }}
       >
-      <Entypo name="new-message" size={30} color="black"  style={{ alignItems:"center", marginLeft:105,marginTop:hp('2%')}}  onPress={()=>navigation.navigate('Feedback')} />
+      <Entypo name="new-message" size={30} color="black"  style={{ alignItems:"center", marginLeft:105,marginTop:hp('1%')}}  onPress={()=>navigation.navigate('Feedback')} />
       <AntDesign name="home" size={30} color="black" style={{ alignItems:"center", marginLeft:175,marginTop:hp('-3.7%')}}  onPress={()=>navigation.navigate('Main')}/>
       <AntDesign name="book" size={30} color="black" style={{ alignItems:"center", marginLeft:245,marginTop:hp('-3.7%')}} onPress={()=>navigation.navigate('EA')}/>  
       </View> 
