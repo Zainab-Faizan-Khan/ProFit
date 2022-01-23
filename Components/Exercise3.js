@@ -65,9 +65,10 @@ const Exercise3 = ({navigation}) => {
           width: wp("100%"),
           backgroundColor: "grey",
           
-          borderRadius: 25,
+          borderBottomLeftRadius: 25,
+          borderBottomRightRadius: 25,
           marginRight: 20,
-          marginTop: hp("9%"),
+          marginTop: hp("4%"),
           position: "absolute",
           borderColor: "grey",
         }}
@@ -83,6 +84,7 @@ const Exercise3 = ({navigation}) => {
             fontWeight: "bold",
             fontSize: 30,
             fontStyle: "italic",
+            marginTop:hp("3%")
           }}
         >
           Advance's Level Exercises
@@ -204,7 +206,7 @@ const Exercise3 = ({navigation}) => {
           style={{
             marginTop: hp("12%"),
             position: "absolute",
-            marginLeft: 110,
+            marginLeft: 90,
            
             color: "black",
             fontWeight: "bold",
@@ -234,7 +236,7 @@ const Exercise3 = ({navigation}) => {
             color: "white",
             fontWeight: "bold",
             fontSize: 26,
-            marginTop:hp("17%")
+            marginTop:hp("13%")
           }}
         >
           Bench Press
@@ -275,7 +277,8 @@ const styles = StyleSheet.create({
   i1: {
     height: hp("24%"),
     width: wp("100%"),
-    borderRadius: 25,
+    borderBottomLeftRadius: 25,
+          borderBottomRightRadius: 25,
     marginTop: wp("2%"),
   },
   i2: {

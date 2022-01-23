@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import User from "./User";
+import { LogBox } from "react-native";
 import {
   StyleSheet,
   Button,
@@ -22,29 +24,10 @@ import { Validator } from "email-validator";
 import * as Yup from "yup";
 
 export default function Login({ navigation }) {
-  async function logInfb() {
-    try {
-      await Facebook.initializeAsync({
-        appId: "678701643508758",
-      });
-      const { type, token, expirationDate, permissions, declinedPermissions } =
-        await Facebook.logInWithReadPermissionsAsync({
-          permissions: ["public_profile"],
-        });
-      if (type === "success") {
-        // Get the user's name using Facebook's Graph API
-        const response = await fetch(
-          `https://graph.facebook.com/me?access_token=${token}`
-        );
-        setsigninvalid(false);
-        navigation.navigate("Main");
-      } else {
-        // type === 'cancel'
-      }
-    } catch ({ message }) {
-      setsigninvalid(true);
-    }
-  }
+LogBox.ignoreLogs(['Setting a timer']);
+  const [signinvalid, setsigninvalid] = React.useState(false);
+  const [accessToken, setAccessToken] = React.useState();
+  const [userInfo, setUserInfo] = React.useState();
 
   const LoginFormSchema = Yup.object().shape({
     email: Yup.string().required("An email is required").email(),
@@ -53,11 +36,68 @@ export default function Login({ navigation }) {
       .min(8, "Your password should have at least 8 characters"),
   });
 
+  async function logInfb() {
+    try {
+      await Facebook.initializeAsync({
+        appId: "678701643508758",
+      });
+      const { type, token, expirationDate, permissions, declinedPermissions } =
+        await Facebook.logInWithReadPermissionsAsync({
+          permissions: ["public_profile","email"],
+        });
+      if (type === "success") {
+        // Get the user's name using Facebook's Graph API
+        const response = await fetch(
+          `https://graph.facebook.com/me?access_token=${token}&fields=id,name,email`
+        );
+          firebase.db.collection('users').where("email",'==',(await response.json()).email).get().then(snapshot=>{snapshot.forEach(doc=>{
+
+        if(doc){
+        User.setname(doc.data().username)
+                User.setemail(doc.data().email)
+                User.setcweight(doc.data().currentweight)
+                User.setgweight(doc.data.goalweight)
+                User.setgoal(doc.data().goal)
+                User.setdiet(doc.data().diet)
+                User.setheight(doc.data().height)
+                User.setgender(doc.data().gender)
+
+        navigation.navigate("Main");
+        setsigninvalid(false);
+        }
+        else{setsigninvalid(true);}
+        })})
+        
+      } else {
+        // type === 'cancel'
+      }
+    } catch ({ message }) {
+      setsigninvalid(true);
+    }
+  }
+
   const onlogin = async (email, password) => {
     try {
       await firebase.auth.signInWithEmailAndPassword(email, password);
       console.log("login successful");
-      navigation.navigate("Main");
+
+
+          firebase.db.collection('users').where("email",'==',email).get().then(snapshot=>{snapshot.forEach(doc=>{
+
+
+        User.setname(doc.data().username)
+                User.setemail(doc.data().email)
+                User.setcweight(doc.data().currentweight)
+                User.setgweight(doc.data.goalweight)
+                User.setgoal(doc.data().goal)
+                User.setdiet(doc.data().diet)
+                User.setheight(doc.data().height)
+                User.setgender(doc.data().gender)
+
+        navigation.navigate("Main");
+})})
+
+      
       setsigninvalid(false);
     } catch (error) {
       console.log(error.message);
@@ -68,9 +108,7 @@ export default function Login({ navigation }) {
       };
     }
   };
-  const [signinvalid, setsigninvalid] = React.useState(false);
-  const [accessToken, setAccessToken] = React.useState();
-  const [userInfo, setUserInfo] = React.useState();
+
   async function signInWithGoogleAsync() {
     try {
       const result = await Google.logInAsync({
@@ -80,8 +118,25 @@ export default function Login({ navigation }) {
         scopes: ["profile", "email"],
       });
       if (result.type === "success") {
-        setAccessToken(accessToken);
-        navigation.navigate("Main");
+
+ firebase.db.collection('users').where("email",'==',result.user.email).get().then(snapshot=>{snapshot.forEach(doc=>{
+if(doc){
+
+        User.setname(doc.data().username)
+                User.setemail(doc.data().email)
+                User.setcweight(doc.data().currentweight)
+                User.setgweight(doc.data.goalweight)
+                User.setgoal(doc.data().goal)
+                User.setdiet(doc.data().diet)
+                User.setheight(doc.data().height)
+                User.setgender(doc.data().gender)
+
+        navigation.navigate("Main");}
+else{ setsigninvalid(true)
+}
+})})
+
+        
         setsigninvalid(false);
       } else {
         console.log("permission denied");
@@ -101,12 +156,11 @@ export default function Login({ navigation }) {
         headers: { Authorization: `Bearer ${accessToken}` },
       }
     );
-
-    userInfoResponse.json().then((data) => {
-      setUserInfo(data);
-    });
+    console.log((await userInfoResponse.json()))
   }
-  function showUserInfo() {}
+
+  
+
   return (
     <View style={{ backgroundColor: "black", height: 1000 }}>
       <ImageBackground

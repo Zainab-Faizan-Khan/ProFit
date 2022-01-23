@@ -9,11 +9,13 @@ import firebase from '../firebase';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { RadioButton } from 'react-native-paper';
 import Slider from '@react-native-community/slider';
-
-
+import User from './User';
+import { LogBox } from 'react-native';
 
 export default function SignUp ({navigation}) {
-    const [email,setemail]=React.useState(null)
+LogBox.ignoreLogs(['Setting a timer']);
+
+const [email,setemail]=React.useState(null)
 const [pw,setpw]=React.useState(null)
 const [uname,setuname]=React.useState(null)
 const [checked, setChecked] = React.useState('female')
@@ -22,6 +24,9 @@ const [gweight,setgweight]=React.useState(null)
 const [cheight,setheight]=React.useState(null)
 const [goal,setgoal]=React.useState('strong')
 const [diet,setdiet]=React.useState('nonveg')
+
+
+
 const [invalid,setinvalid]=React.useState(false)
 const [inevalid,seteinvalid]=React.useState(false)
   const onsignup = async ()=>{
@@ -44,14 +49,29 @@ if(email!==null|pw!==null|uname|null){
               
 })
 console.log(uname,email,pw,cweight,gweight,goal,diet,cheight,checked)
-        navigation.navigate('Main')
+        
+
+ User.setname(uname)
+        User.setemail(email)
+        User.setcweight(cweight)
+        User.setgweight(gweight)
+        User.setgoal(goal)
+        User.setdiet(diet)
+        User.setheight(cheight)
+        User.setgender(checked)
+
+navigation.navigate('Main')
+
+
 }
-      catch(e){Alert.alert(e.message)}
+      catch(e){Alert.alert(e.message)
+if(email==null){seteinvalid(true);setinvalid(true)}
+}
 
 }
 else{
-if(email==null){seteinvalid(true)}
 if(uname==null){setinvalid(true)}
+if(pw==null){setinvalid(true)}
 }
 
 }
@@ -62,8 +82,8 @@ if(uname==null){setinvalid(true)}
 { flex: 1, flexDirection:'column', justifyContent: 'center',height:1000,position:'absolute',backgroundColor:'black',width:1000 }}>
  <ImageBackground source={require("../assets/signup.jpeg")} style={styles.image}></ImageBackground>
 <>
-    <Image source={require("../assets/headerlogo.png")}  style={{ marginTop:-750,marginLeft:110,height:190,width:180}}/>
-    {invalid&& <View><Text style={{color:"red", marginTop:-75,marginLeft:110,fontSize:15}}>* Required fields are invalid.</Text></View>}</>
+    
+    {invalid && <Text style={{color:"red",top:130,marginLeft:110,fontSize:15,position:'absolute',fontWeight:'bold'}}>* Required fields are invalid.</Text>}</>
 </View>
     <Carousel showsControls={false}>
 

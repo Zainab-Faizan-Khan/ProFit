@@ -1,5 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useRef, useState } from "react";
+import User from "./User";
+import { LogBox } from 'react-native';
 import {
   Animated,
   Image,
@@ -23,6 +25,23 @@ import menu from '../assets/menu.png';
 import close from '../assets/close.png';
 import Pro from "./profile";
 export default function Sidenav({ navigation }) {
+LogBox.ignoreLogs(['Setting a timer']);
+
+function logout1(){
+ User.setname('')
+        User.setemail('')
+        User.setcweight(null)
+        User.setgweight(null)
+        User.setgoal('')
+        User.setdiet('')
+        User.setheight(null)
+        User.setgender('')
+
+navigation.navigate('Start')
+
+}
+
+
     const [showMenu, setShowMenu] = useState(false);
 
   // Animated Properties...
@@ -54,7 +73,7 @@ export default function Sidenav({ navigation }) {
             marginTop: 100,
           }}
         >
-          Zainab Faizan
+          {User.getname()}
         </Text>
 
         <TouchableOpacity>
@@ -152,7 +171,7 @@ export default function Sidenav({ navigation }) {
   
         </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate("EA")}>
+          <TouchableOpacity onPress={()=>{logout1()}}>
           <View style={{
           flexDirection: "row",
           alignItems: 'center',
@@ -161,7 +180,7 @@ export default function Sidenav({ navigation }) {
           paddingLeft: 13,
           paddingRight: 35,
           borderRadius: 8,
-          marginTop: 385,
+          marginTop: 362,
           marginRight:190
         }}>
   
@@ -291,7 +310,7 @@ export default function Sidenav({ navigation }) {
               fontWeight: "bold",
             }}
           >
-            Zainab Faizan
+            {User.getname()}
           </Text>
           <Text
             style={{
@@ -311,7 +330,7 @@ export default function Sidenav({ navigation }) {
               fontStyle: "italic",
             }}
           >
-            zainabfaizan@gmail.com
+            {User.getemail()}
           </Text>
         </View>
 
@@ -350,7 +369,7 @@ export default function Sidenav({ navigation }) {
         <Text
           style={{ textAlign: "center", fontSize: 13, fontStyle: "italic" }}
         >
-          157cm
+          {User.getheight()}
         </Text>
       </View>
       <View
@@ -381,7 +400,7 @@ export default function Sidenav({ navigation }) {
         <Text
           style={{ textAlign: "center", fontSize: 13, fontStyle: "italic" }}
         >
-          Female
+          {User.getgender()}
         </Text>
       </View>
 
@@ -408,7 +427,7 @@ export default function Sidenav({ navigation }) {
         <Text
           style={{ textAlign: "center", fontSize: 13, fontStyle: "italic" }}
         >
-          48Kgs
+          {User.getcweight()}
         </Text>
       </View>
       <Text

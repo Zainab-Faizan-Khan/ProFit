@@ -62,12 +62,13 @@ const Exercise2 = ({navigation}) => {
       <View
         style={{
           height: hp("26%"),
-          width: wp("85%"),
+          width: wp("100%"),
           backgroundColor: "grey",
-          marginLeft: wp("8%"),
-          borderRadius: 25,
+          marginLeft: wp("0%"),
+          borderBottomLeftRadius: 25,
+          borderBottomRightRadius: 25,
           marginRight: 20,
-          marginTop: hp("9%"),
+          marginTop: hp("6%"),
           position: "absolute",
           borderColor: "grey",
         }}
@@ -265,8 +266,9 @@ const styles = StyleSheet.create({
   },
   i1: {
     height: hp("25%"),
-    width: wp("84%"),
-    borderRadius: 25,
+    width: wp("100%"),
+    borderBottomLeftRadius: 25,
+          borderBottomRightRadius: 25,
   },
   i2: {
     height: hp("20%"),

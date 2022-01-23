@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { LogBox } from 'react-native';
 import {
   StyleSheet,
   Button,
@@ -10,6 +11,7 @@ import {
   Keyboard,
   KeyboardAvoidingView,
 } from "react-native";
+import firebase from '../firebase';
 import { Entypo } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { AntDesign } from '@expo/vector-icons';
@@ -19,7 +21,17 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 export default function Feedback({ navigation }) {
-  const [email, setEmail] = useState("");
+
+LogBox.ignoreLogs(['Setting a timer']);
+
+  const [fmail, setfmail] = useState("");
+const [Feedback, setfeedback] = useState("");
+function submitfeed(){
+ firebase.db.collection('feedback').add({
+              email:fmail,
+              feedback: Feedback})
+console.log("feedback submitted!");}
+
   return (
     <View style={{ backgroundColor: "#d7edf0", height: 2000 }}>
   <KeyboardAvoidingView behavior="position">
@@ -29,7 +41,7 @@ export default function Feedback({ navigation }) {
       />
       <Text
         style={{
-          marginTop: 20,
+          
           marginLeft: 100,
           fontSize: 24,
           fontWeight: "bold",
@@ -191,7 +203,7 @@ export default function Feedback({ navigation }) {
         style={{
           height: hp("44%"),
           backgroundColor: "#adccdb",
-          marginTop: hp("6%"),
+          marginTop: hp("4%"),
           marginLeft: wp("14.5%"),
           marginRight: wp("14.5%"),
           borderRadius: 50,
@@ -234,7 +246,7 @@ export default function Feedback({ navigation }) {
                 marginRight: wp("10%"),
                 height: hp("4%"),
                 borderColor: "#598094",
-
+                
                 borderTopRightRadius: 1,
                 borderTopLeftRadius: 1,
                 borderLeftColor: "transparent",
@@ -243,8 +255,8 @@ export default function Feedback({ navigation }) {
                 borderWidth: 4,
               }}
               label="Email"
-              value={email}
-              onChangeText={(text) => setEmail(text)}
+              value={fmail}
+              onChangeText={(text) => setfmail(text)}
               mode="outlined"
               placeholder="  Enter Email"
             />
@@ -272,8 +284,8 @@ export default function Feedback({ navigation }) {
               label="Email"
               multiline={true}
         numberOfLines={4} 
-              value={email}
-              onChangeText={(text) => setEmail(text)}
+              value={Feedback}
+              onChangeText={(text) => setfeedback(text)}
               mode="outlined"
               placeholder="  Enter Feedback"
             />
@@ -282,7 +294,7 @@ export default function Feedback({ navigation }) {
               style={{ marginTop: -49, marginLeft: 17 }} />
           </View>
            <View style={styles.styleBtn1}> 
-            <TouchableOpacity ><Text style={{fontSize:15,fontWeight:"bold"}}>Post!</Text></TouchableOpacity>
+            <TouchableOpacity onPress={()=>{submitfeed()}}><Text style={{fontSize:15,fontWeight:"bold"}}>Post!</Text></TouchableOpacity>
            </View>
           </View>
 </KeyboardAvoidingView>

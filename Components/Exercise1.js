@@ -64,9 +64,10 @@ const Exercise1 = ({navigation}) => {
           height: hp("26%"),
           width: wp("100%"),
           backgroundColor: "grey",
-          borderRadius: 25,
+          borderBottomLeftRadius: 25,
+          borderBottomRightRadius: 25,
           marginRight: 20,
-          marginTop: hp("9%"),
+          marginTop: hp("4%"),
           position: "absolute",
           borderColor: "grey",
         }}
@@ -164,7 +165,7 @@ const Exercise1 = ({navigation}) => {
         <Text
           style={{
             position: "absolute",
-            marginLeft: 50,
+            marginLeft: 44,
             color: "black",
             fontWeight: "bold",
             fontSize: 37,
@@ -286,7 +287,9 @@ const styles = StyleSheet.create({
   i1: {
     height: hp("24%"),
     width: wp("100%"),
-    borderRadius: 25,
+  borderBottomLeftRadius: 25,
+          borderBottomRightRadius: 25,
+    
     marginTop: wp("2%"),
    
   },

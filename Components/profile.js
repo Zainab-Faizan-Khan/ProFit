@@ -1,5 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useRef, useState } from 'react';
+import User from "./User";
+import { LogBox } from 'react-native';
 import {
   Animated,
   StyleSheet,
@@ -20,6 +22,9 @@ import {
 } from "react-native-responsive-screen";
 
 export default function Pro({ navigation }) {
+
+
+LogBox.ignoreLogs(['Setting a timer']);
   return (
     <View style={{ backgroundColor: "#d7edf0", height: 1000 }}>
      
@@ -54,7 +59,7 @@ export default function Pro({ navigation }) {
               fontWeight: "bold",
             }}
           >
-            Zainab Faizan
+            {User.getname()}
           </Text>
           <Text
             style={{
@@ -74,7 +79,7 @@ export default function Pro({ navigation }) {
               fontStyle: "italic",
             }}
           >
-            zainabfaizan@gmail.com
+            {User.getemail()}
           </Text>
         </View>
 
@@ -112,7 +117,7 @@ export default function Pro({ navigation }) {
         <Text
           style={{ textAlign: "center", fontSize: 13, fontStyle: "italic" }}
         >
-          157cm
+          {User.getheight()}
         </Text>
       </View>
       <View
@@ -143,7 +148,7 @@ export default function Pro({ navigation }) {
         <Text
           style={{ textAlign: "center", fontSize: 13, fontStyle: "italic" }}
         >
-          Female
+          {User.getgender()}
         </Text>
       </View>
 
@@ -170,7 +175,7 @@ export default function Pro({ navigation }) {
         <Text
           style={{ textAlign: "center", fontSize: 13, fontStyle: "italic" }}
         >
-          48Kgs
+          {User.getcweight} KG
         </Text>
       </View>
 
