@@ -101,9 +101,9 @@ useEffect(() => {
 
 var hours = new Date().getHours();
 
-if(hours<12 & hours >5){setgreetings("GOOD MORNING!");seti(morn)}
-else if(hours<17 & hours >12){setgreetings("GOOD AFTERNOON!");seti(after)}
-else if(hours<20 & hours>17){setgreetings("GOOD EVENING!");seti(even)}
+if(hours<12 ){setgreetings("GOOD MORNING!");seti(morn)}
+else if(hours<17 ){setgreetings("GOOD AFTERNOON!");seti(after)}
+else if(hours<20 ){setgreetings("GOOD EVENING!");seti(even)}
 else{setgreetings("GOOD NIGHT!");seti(night)}
 getexcersises()
 
