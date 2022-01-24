@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Image, View, Platform, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker'
+import firebase from '../firebase';
+import User from './User';
 export default function UploadImage() {
   const [image, setImage] = useState(null);
   const addImage = async () => {
@@ -14,7 +16,16 @@ export default function UploadImage() {
 
 
     console.log(JSON.stringify(_image));
+   firebase.db.collection('users').doc(User.getid()).update({
 
+
+img:_image.uri,
+
+
+
+
+})
+User.setimg(_image.uri)
     if (!_image.cancelled) {
       setImage(_image.uri);
     }
@@ -23,9 +34,9 @@ export default function UploadImage() {
  
   return (
             <View style={imageUploaderStyles.container}>
-                {
-                    image  && <Image source={{ uri: image }} style={{ width: 100, height: 100 }} />
-                }
+                
+                   <Image source={{ uri: User.getimg() }} style={{ width: 100, height: 100 }} />
+                
                     
                     <View style={imageUploaderStyles.uploadBtnContainer}>
                         <TouchableOpacity onPress={addImage} style={imageUploaderStyles.uploadBtn} >

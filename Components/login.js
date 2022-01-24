@@ -25,6 +25,7 @@ import * as Yup from "yup";
 
 export default function Login({ navigation }) {
 LogBox.ignoreLogs(['Setting a timer']);
+LogBox.ignoreLogs(['Each child in a list']);
   const [signinvalid, setsigninvalid] = React.useState(false);
   const [accessToken, setAccessToken] = React.useState();
   const [userInfo, setUserInfo] = React.useState();
@@ -61,7 +62,22 @@ LogBox.ignoreLogs(['Setting a timer']);
                 User.setdiet(doc.data().diet)
                 User.setheight(doc.data().height)
                 User.setgender(doc.data().gender)
+                User.setimg(doc.data().img)
+                User.setid(doc.id)
+                
+        var g=""
+        var r=[]
+        if(User.getgoal()=="strong"){g="strong"}
+        else if(User.getgoal()=="loose"){g="loose"}
+        else{g="maintain"}
+        firebase.db.collection(g).onSnapshot((snapshot)=>{snapshot.forEach(doc=>{
 
+const title=doc.data().title
+const img=doc.data().img
+
+r.push([title,img])
+})})
+User.setrecommend(r)
         navigation.navigate("Main");
         setsigninvalid(false);
         }
@@ -92,8 +108,22 @@ LogBox.ignoreLogs(['Setting a timer']);
                 User.setgoal(doc.data().goal)
                 User.setdiet(doc.data().diet)
                 User.setheight(doc.data().height)
+User.setimg(doc.data().img)
+                User.setid(doc.id)
                 User.setgender(doc.data().gender)
+        var g=""
+        var r=[]
+        if(User.getgoal()=="strong"){g="strong"}
+        else if(User.getgoal()=="loose"){g="loose"}
+        else{g="maintain"}
+        firebase.db.collection(g).onSnapshot((snapshot)=>{snapshot.forEach(doc=>{
 
+const title=doc.data().title
+const img=doc.data().img
+
+r.push([title,img])
+})})
+User.setrecommend(r)
         navigation.navigate("Main");
 })})
 
@@ -127,10 +157,24 @@ if(doc){
                 User.setcweight(doc.data().currentweight)
                 User.setgweight(doc.data.goalweight)
                 User.setgoal(doc.data().goal)
+User.setimg(doc.data().img)
+                User.setid(doc.id)
                 User.setdiet(doc.data().diet)
                 User.setheight(doc.data().height)
                 User.setgender(doc.data().gender)
+        var g=""
+        var r=[]
+        if(User.getgoal()=="strong"){g="strong"}
+        else if(User.getgoal()=="loose"){g="loose"}
+        else{g="maintain"}
+        firebase.db.collection(g).onSnapshot((snapshot)=>{snapshot.forEach(doc=>{
 
+const title=doc.data().title
+const img=doc.data().img
+
+r.push([title,img])
+})})
+User.setrecommend(r)
         navigation.navigate("Main");}
 else{ setsigninvalid(true)
 }

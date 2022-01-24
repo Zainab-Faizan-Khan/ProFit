@@ -1,6 +1,7 @@
-import { StatusBar } from "expo-status-bar";
+
 import React, { useRef, useState } from "react";
 import User from "./User";
+import firebase from '../firebase';
 import { LogBox } from 'react-native';
 import {
   Animated,
@@ -8,7 +9,7 @@ import {
   SafeAreaView,
   StyleSheet,
   Text,
-  TouchableOpacity,
+  TouchableOpacity,TextInput,
   View,
 } from "react-native";
 import {
@@ -19,11 +20,12 @@ import Circle from "./circle";
 import { Ionicons } from "@expo/vector-icons";
 import home from "../assets/home.png";
 import search from '../assets/search.png';
-import settings from '../assets/settings.png';
+
 import logout from '../assets/logout.png';
 import menu from '../assets/menu.png';
 import close from '../assets/close.png';
 import Pro from "./profile";
+
 export default function Sidenav({ navigation }) {
 LogBox.ignoreLogs(['Setting a timer']);
 
@@ -36,9 +38,47 @@ function logout1(){
         User.setdiet('')
         User.setheight(null)
         User.setgender('')
-
+        User.setchoice('')
+        User.setimg('')
+        User.setid(null)
 navigation.navigate('Start')
 
+}
+
+    const [showh, seth] = useState();
+    const [showw, setw] = useState();
+  const [ifh, setifh] = useState(false);
+const [ifw, setifw] = useState(false);
+
+
+
+function setheigh(){
+
+   firebase.db.collection('users').doc(User.getid()).update({
+
+
+height:showh,
+
+
+
+
+})
+User.setheight(showh)
+setifh(false)
+}
+
+function setweigh(){
+
+
+
+   firebase.db.collection('users').doc(User.getid()).update({
+
+
+currentweight:showw
+
+})
+User.setcweight(showw)
+setifw(false)
 }
 
 
@@ -117,33 +157,7 @@ navigation.navigate('Start')
   
         </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate("FP1")}>
-          <View style={{
-          flexDirection: "row",
-          alignItems: 'center',
-          paddingVertical: 8,
-          backgroundColor: '#598094',
-          paddingLeft: 13,
-          paddingRight: 35,
-          borderRadius: 8,
-          marginTop: 20,
-          marginRight:190
-        }}>
-  
-          <Image source={settings} style={{
-            width: 25, height: 25,
-            tintColor: "black"
-          }}></Image>
-  
-          <Text style={{
-            fontSize: 15,
-            fontWeight: 'bold',
-            paddingLeft: 15,
-            color:  "black"
-          }}>Setting</Text>
-  
-        </View>
-          </TouchableOpacity>
+
           <TouchableOpacity onPress={() => navigation.navigate("EA")}>
           <View style={{
           flexDirection: "row",
@@ -167,7 +181,7 @@ navigation.navigate('Start')
             fontWeight: 'bold',
             paddingLeft: 15,
             color:  "black"
-          }}>Search</Text>
+          }}>Help</Text>
   
         </View>
           </TouchableOpacity>
@@ -320,7 +334,7 @@ navigation.navigate('Start')
               fontStyle: "italic",
             }}
           >
-            Get Fit
+            Get {User.getgoal()}
           </Text>
           <Text
             style={{
@@ -356,6 +370,7 @@ navigation.navigate('Start')
           borderRightColor: "#7aa0b4",
         }}
       >
+      <View style={{backgroundColor:"red",width:20,height:20,borderRadius:50,position:'absolute',marginLeft:-15}}><TouchableOpacity style={{backgroundColor:"red",width:20,height:20,borderRadius:5}} onPress={()=>{setifh(true)}} ></TouchableOpacity></View>
         <Text
           style={{
             textAlign: "center",
@@ -372,6 +387,7 @@ navigation.navigate('Start')
           {User.getheight()}
         </Text>
       </View>
+
       <View
         style={{
           backgroundColor: "transparent",
@@ -413,13 +429,14 @@ navigation.navigate('Start')
           marginLeft: wp("57%"),
         }}
       >
+      <View style={{backgroundColor:"red",width:20,height:20,borderRadius:50,position:'absolute',marginLeft:5,marginTop: 10}}><TouchableOpacity style={{backgroundColor:"red",width:20,height:20,borderRadius:5}} onPress={()=>{setifw(true)}}></TouchableOpacity></View>
         <Text
           style={{
             textAlign: "center",
             fontWeight: "bold",
             fontSize: 20,
             color: "#25a0a3",
-            marginTop: 10,
+            marginTop: 10,marginLeft:10
           }}
         >
           Weight
@@ -453,7 +470,69 @@ navigation.navigate('Start')
         }}
       ></View>
 
-        
+
+{ifh && <>
+<View style={{backgroundColor:'#000', position:"absolute", height: hp("110%"),width: wp("100%"),opacity:0.4,justifyContent:'center'}}></View>
+        <View style={{backgroundColor:'#fff', position:"absolute", height: hp("25%"),width: wp("65%"),marginTop:300,marginLeft:70,textAlign:'center'}}>
+
+<Text style={{marginTop:40,marginLeft:45,fontSize:20}}>Enter New Height</Text>
+<TextInput 
+                style={{ fontSize: 15 ,borderBottomColor: 'grey',  
+                borderBottomWidth:2, width: wp("40%"),marginLeft:45,marginTop:10}} 
+                onChangeText={seth}
+                value={showh}
+                placeholder={User.getheight()}
+                placeholderTextColor="grey"
+                
+                   
+                    />
+
+
+<View style={{display:'flex',flexDirection:'row'}}>
+<View style={{ fontSize: 15 , backgroundColor:'#7aa0b4',marginLeft:30,marginTop:30,
+                width:80,color:'white',height:40}} ><TouchableOpacity style={{width:40,height:40}}  onPress={()=>{setifh(false)}}><Text style={{color:'white',fontSize: 13,width:40,marginLeft:20,marginTop:10}}>Cancel</Text></TouchableOpacity></View>
+
+<View style={{ fontSize: 15 , backgroundColor:'#7aa0b4',marginLeft:26,marginTop:30,
+                width:80,height:40}} ><TouchableOpacity style={{width:40,height:40,textAlign:'center'}} onPress={()=>{setheigh()}}><Text style={{color:'white',fontSize: 13,width:40,marginLeft:25,marginTop:10}}>Save</Text ></TouchableOpacity></View>
+
+</View>
+</View>
+<View>
+
+
+</View></>}
+{ifw && <>
+<View style={{backgroundColor:'#000', position:"absolute", height: hp("110%"),width: wp("100%"),opacity:0.4,justifyContent:'center'}}></View>
+        <View style={{backgroundColor:'#fff', position:"absolute", height: hp("25%"),width: wp("65%"),marginTop:300,marginLeft:70,textAlign:'center'}}>
+
+<Text style={{marginTop:40,marginLeft:45,fontSize:20}}>Enter New Weight</Text>
+<TextInput 
+                style={{ fontSize: 15 ,borderBottomColor: 'grey',  
+                borderBottomWidth:2, width: wp("40%"),marginLeft:45,marginTop:10}} 
+                onChangeText={setw}
+                value={showw}
+                placeholder={User.getcweight()}
+                placeholderTextColor="grey"
+                
+                   
+                    />
+
+
+<View style={{display:'flex',flexDirection:'row'}}>
+<View style={{ fontSize: 15 , backgroundColor:'#7aa0b4',marginLeft:30,marginTop:30,
+                width:80,color:'white',height:40}} ><TouchableOpacity style={{width:40,height:40}} onPress={()=>{setifw(false)}}><Text style={{color:'white',fontSize: 13,width:40,marginLeft:20,marginTop:10}}>Cancel</Text></TouchableOpacity></View>
+
+<View style={{ fontSize: 15 , backgroundColor:'#7aa0b4',marginLeft:26,marginTop:30,
+                width:80,height:40}} ><TouchableOpacity style={{width:40,height:40,textAlign:'center'}} onPress={()=>{setweigh()}}><Text style={{color:'white',fontSize: 13,width:40,marginLeft:25,marginTop:10}}>Save</Text ></TouchableOpacity></View>
+
+</View>
+</View>
+<View>
+
+</View>
+</>
+}
+
       </Animated.View>
     </SafeAreaView>
   );

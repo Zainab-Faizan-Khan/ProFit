@@ -19,7 +19,7 @@ import Exercise3 from './Components/Exercise3';
 import Feedback from './Components/feedback';
 import EA from './Components/exerciseAll';
 import Sidenav from './Components/sideNav';
-
+import Detail from './Components/detail';
 const Stack = createStackNavigator();
 export default function App() {
   return (
@@ -32,7 +32,7 @@ export default function App() {
        
       <Stack.Screen name="Start" component={Start} options={{ headerShown: false }}  />
       <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
-
+        <Stack.Screen name="Detail" component={Detail} options={{ headerShown: false }}  />
       <Stack.Screen name="SignUp" component={SignUp} options={{ headerShown: false }} />
 
       <Stack.Screen name="Main" component={Main} options={{ headerShown: false }} />

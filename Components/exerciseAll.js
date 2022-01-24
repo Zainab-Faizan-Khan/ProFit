@@ -1,4 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
+import { Entypo } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
+import {
+    widthPercentageToDP as wp,
+    heightPercentageToDP as hp,
+  } from "react-native-responsive-screen";
+import ExcersiseStore from './ExcersiseStore';
+import User from './User';
 import { StyleSheet, Text, View , Button, TouchableOpacity ,Image ,ScrollView} from 'react-native';
 import React , {useState , useEffect} from 'react';
 import firebase from '../firebase';
@@ -14,7 +22,7 @@ const [ctype,setctype]=React.useState(null)
 const [ccat,setccat]=React.useState(null)
 const [cimg,setcimg]=React.useState(null)
 
-const [ccode,setccode]=React.useState()
+
 
 
 useEffect (async ()=>{getCollectionarm()},[])
@@ -39,7 +47,7 @@ sethj(h)
 
 }); //TODO: add query if needed
  
-console.log(hi)
+
 
  }catch(err){
   res.status(500).send(err);
@@ -68,18 +76,27 @@ sethj(h)
 
 }); //TODO: add query if needed
  
-console.log(hi)
+
 
  }catch(err){
   res.status(500).send(err);
  }
 
 }
-
+const current = new Date();
+  const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`
 function starte(){
+ExcersiseStore.setemail(User.getemail())
+ExcersiseStore.settitle(cexcer)
+ExcersiseStore.setdate(date)
+ExcersiseStore.setimg(cimg)
+
+console.log(cexcer,date,cimg,User.getemail())
+
+navigation.navigate('Detail')
 
 
-console.log(cexcer)}
+}
 //
 return(
 <View style={styles.container}>
@@ -96,14 +113,15 @@ return(
       <View style={{backgroundColor:"yellow", width:384/2,height:300}}>
 <Image style={{ width:384/2,height:300}} source={{uri:cimg} } resizeMode='stretch'></Image>
 </View>
-      < View style={{backgroundColor:"blue", width:384/2,height:300,flexDirection:"column",justifyContent:'center',alignItems:'center'}}>
-        <Text style={{fontSize:20}}>Name:</Text>
+      < View style={{backgroundColor:"#25a0af", width:384/2,height:300,flexDirection:"column",justifyContent:'center',alignItems:'center'}}>
+        <Text style={{fontSize:20,color:"#Fdbfff"}}>Name:</Text>
         <Text style={{fontSize:20}}>{cexcer}</Text>
-        <Text style={{fontSize:20,marginTop:10}}>Excersise Type:</Text>
+        <Text style={{fontSize:20,marginTop:10,color:"#Fdbfff"}}>Excersise Type:</Text>
         <Text style={{fontSize:20}}>{ctype}</Text>
-        <Text style={{fontSize:20,marginTop:10}}>Category:</Text>
+        <Text style={{fontSize:20,marginTop:10,color:"#Fdbfff"}}>Category:</Text>
         <Text style={{fontSize:20,marginBottom:20}}>{ccat}</Text>
-        <Button title='Lets Start' onPress={()=>{starte()}} ></Button>
+        <View >
+        <Button title='Lets Start' onPress={()=>{starte()}}  ></Button></View>
 </View>
 </View>
 
@@ -124,6 +142,27 @@ hi.map(item=>(
 }
 </ScrollView>
 </View>
+
+      <View
+        style={{
+          height: 200,
+          width: wp('100%'),
+          backgroundColor: "#d7edf0",
+          borderRadius: 80,
+          
+          borderLeftWidth:20,
+          borderRightWidth:20,
+          borderTopWidth:5,
+          marginBottom:0,
+          marginTop: hp('98%'),
+          position: "absolute",
+          borderColor:'#598094'
+        }}
+      >
+      <Entypo name="new-message" size={30} color="black"  style={{ alignItems:"center", marginLeft:105,marginTop:hp('1%')}}  onPress={()=>navigation.navigate('Feedback')} />
+      <AntDesign name="home" size={30} color="black" style={{ alignItems:"center", marginLeft:175,marginTop:hp('-3.7%')}}  onPress={()=>navigation.navigate('Main')}/>
+      <AntDesign name="book" size={30} color="black" style={{ alignItems:"center", marginLeft:245,marginTop:hp('-3.7%')}} onPress={()=>navigation.navigate('EA')}/>  
+      </View> 
 
     </View>
   );

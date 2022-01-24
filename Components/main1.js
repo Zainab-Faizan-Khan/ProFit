@@ -1,5 +1,6 @@
 import React, { useState ,useEffect} from "react";
 import User from "./User";
+import ExcersiseStore from "./ExcersiseStore";
 import {
   StyleSheet,
   Button,
@@ -27,14 +28,20 @@ import after from "../assets/after.png";
 import even from "../assets/even.png"
 import night from "../assets/night.png"
 
-export default function Main({ navigation }) {
-    
 
+export default function Main({ navigation }) {
+LogBox.ignoreLogs(['Setting a timer']);
+    LogBox.ignoreLogs(['Each child in a list']);
+
+const [msg,setmsg]=React.useState()
 const [erx,seterx]=React.useState([])
-const [rec,setrec]=React.useState([])
-const [msg,setmsg]=React.useState([])
+
+
+
+
  function getexcersises (){ 
 var er=[]
+var e=[]
 try{
 
 
@@ -45,13 +52,14 @@ const title=doc.data().title
 const img=doc.data().img
 
 er.push([title,img])
+e.push(title)
 }
 else{setmsg("You dont have any excersises at the moment")}
 })
 
 seterx(er)
 
-
+User.sete(e)
 }); //TODO: add query if needed
  
 
@@ -62,38 +70,28 @@ seterx(er)
 
 }
 
- function getrecommend (){ 
-var re=[]
-var goal=""
-if(User.getgoal()=="strong"){goal="strong"}
-else if(User.getgoal()=="loose"){goal="loose"}
-else{goal="maintain"}
-try{
-
-
-
-    firebase.db.collection(goal).onSnapshot((snapshot)=>{snapshot.forEach(doc=>{
-
-const title=doc.data().title
-const img=doc.data().img
-
-re.push([title,img])
-
-
-})
-
-setrec(re)
-
-
-}); //TODO: add query if needed
  
+function begin(){
+const current = new Date();
+  const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`
+ExcersiseStore.setemail(User.getemail())
+
+ExcersiseStore.setdate(date)
 
 
- }catch(err){
-  res.status(500).send(err);
- }
+
+
+navigation.navigate('Detail')
 
 }
+
+
+
+
+
+
+
+
 
 
 const [greetings,setgreetings]=React.useState()
@@ -103,13 +101,14 @@ useEffect(() => {
 
 var hours = new Date().getHours();
 
-if(hours<12){setgreetings("GOOD MORNING!");seti(morn)}
-else if(hours<17){setgreetings("GOOD AFTERNOON!");seti(after)}
-else if(hours<20){setgreetings("GOOD EVENING!");seti(even)}
+if(hours<12 & hours >5){setgreetings("GOOD MORNING!");seti(morn)}
+else if(hours<17 & hours >12){setgreetings("GOOD AFTERNOON!");seti(after)}
+else if(hours<20 & hours>17){setgreetings("GOOD EVENING!");seti(even)}
 else{setgreetings("GOOD NIGHT!");seti(night)}
-})
 getexcersises()
-getrecommend()
+
+})
+
   return (
    
     <View style={{ backgroundColor: "#d7edf0", height: 2000 }}>
@@ -154,7 +153,7 @@ getrecommend()
         {User.getname()}
       </Text>
 <ScrollView showsVerticalScrollIndicator={true} >
-<View style={{height:1200}}>
+<View style={{height:2250}}>
 <Text style={{fontSize:20,width: wp("100%"),textAlign:'center',marginTop:6,paddingTop:6,borderTopColor:'black',borderTopWidth:1}}>Your Exercises</Text>
 <Text style={{fontSize:15,width: wp("100%"),textAlign:'center',marginTop:6,paddingTop:6}}>{msg}</Text>
 
@@ -165,7 +164,7 @@ getrecommend()
 
 erx.map(item=>( 
 <View style={{backgroundColor:"red" ,height:180,width:180,flexDirection:'row',marginRight:10,borderRadius:20,overflow:'hidden' }}>
-    <TouchableOpacity >
+    <TouchableOpacity onPress={()=>{ExcersiseStore.setimg(item[1]);ExcersiseStore.settitle(item[0]);begin()}}>
       <Image source={{uri:item[1]} } style={{width:180,height:180}}></Image>
       <Text style={{paddingLeft:10,marginTop:140,position:'absolute',fontWeight:"300",color:'black',backgroundColor:'white',fontSize:18,width:180,paddingBottom:9,paddingTop:7}}>{item[0]}</Text>
     </TouchableOpacity>
@@ -178,11 +177,11 @@ erx.map(item=>(
 
       <Text style={{fontSize:20,width: wp("100%"),textAlign:'center',marginTop:6,paddingTop:6,borderTopColor:'black',borderTopWidth:1,marginTop:9}}>Select by Category</Text>
       <View style={{flexDirection:"row",marginTop:5,justifyContent:"center" ,marginLeft:-10}}>
-        <View style={{justifyContent:'center',alignItems:'center'}}><TouchableOpacity style={styles.op} ><Image style={{height:70,width:70}} source={{uri:"https://tse2.mm.bing.net/th?id=OIP.AKljJEmMUJOgX5hlUU8OKAHaEG&pid=Api&P=0&w=321&h=177"} } resizeMode='stretch'></Image></TouchableOpacity><Text >Arms</Text></View>
+        <View style={{justifyContent:'center',alignItems:'center'}}><TouchableOpacity style={styles.op} onPress={()=>{User.setchoice("Arms");navigation.navigate('EA')}}><Image style={{height:70,width:70}} source={{uri:"https://tse2.mm.bing.net/th?id=OIP.AKljJEmMUJOgX5hlUU8OKAHaEG&pid=Api&P=0&w=321&h=177"} } resizeMode='stretch'></Image></TouchableOpacity><Text >Arms</Text></View>
 
-        <View style={{justifyContent:'center',alignItems:'center'}}><TouchableOpacity style={styles.op}><Image style={{height:70,width:70}} source={{uri:"https://tse3.mm.bing.net/th?id=OIP.avNDsChtXFxlwuAd3HoBDQHaFj&pid=Api&P=0&w=223&h=167"} } resizeMode='stretch'></Image></TouchableOpacity><Text >Legs</Text></View>
-        <View style={{justifyContent:'center',alignItems:'center'}}><TouchableOpacity style={styles.op}><Image style={{height:70,width:70}} source={{uri:"https://tse3.mm.bing.net/th?id=OIP.SXnJ5uZ20hhbOfpogg_ADgHaE8&pid=Api&P=0&w=231&h=154"} } resizeMode='stretch'></Image></TouchableOpacity>< Text >Full Body</Text></View>
-        <View style={{justifyContent:'center',alignItems:'center'}}><TouchableOpacity style={styles.op}><Image style={{height:70,width:70}} source={{uri:"https://tse3.mm.bing.net/th?id=OIP.0gUwMZ8dPpJ_j0_LF5ygDwHaE8&pid=Api&P=0&w=282&h=188"} } resizeMode='stretch'></Image></TouchableOpacity><Text >Yoga</Text></View>
+        <View style={{justifyContent:'center',alignItems:'center'}}><TouchableOpacity style={styles.op} onPress={()=>{User.setchoice("Legs");navigation.navigate('EA')}}><Image style={{height:70,width:70}} source={{uri:"https://tse3.mm.bing.net/th?id=OIP.avNDsChtXFxlwuAd3HoBDQHaFj&pid=Api&P=0&w=223&h=167"} } resizeMode='stretch'></Image></TouchableOpacity><Text >Legs</Text></View>
+        <View style={{justifyContent:'center',alignItems:'center'}}><TouchableOpacity style={styles.op} onPress={()=>{User.setchoice("Body");navigation.navigate('EA')}}><Image style={{height:70,width:70}} source={{uri:"https://tse3.mm.bing.net/th?id=OIP.SXnJ5uZ20hhbOfpogg_ADgHaE8&pid=Api&P=0&w=231&h=154"} } resizeMode='stretch'></Image></TouchableOpacity>< Text >Full Body</Text></View>
+        <View style={{justifyContent:'center',alignItems:'center'}}><TouchableOpacity style={styles.op} onPress={()=>{User.setchoice("Yoga");navigation.navigate('EA')}}><Image style={{height:70,width:70}} source={{uri:"https://tse3.mm.bing.net/th?id=OIP.0gUwMZ8dPpJ_j0_LF5ygDwHaE8&pid=Api&P=0&w=282&h=188"} } resizeMode='stretch'></Image></TouchableOpacity><Text >Yoga</Text></View>
         
       </View>
 
@@ -268,14 +267,16 @@ erx.map(item=>(
 
 <Text style={{fontSize:20,width: wp("100%"),textAlign:'center',marginTop:6,paddingTop:6,borderTopColor:'black',borderTopWidth:1,marginTop:9}}>Recommended For You</Text>
 
+
+
 <View style={{flexDirection:'row',marginLeft:5, alignItems:"flex-start"}}>
 <ScrollView horizontal={true}>
 
 {
 
-rec.map(item=>( 
+User.getrecommend().map(item=>( 
 <View style={{backgroundColor:"red" ,height:180,marginTop:15,width:180,flexDirection:'row',marginRight:10,borderRadius:20,overflow:'hidden' }}>
-    <TouchableOpacity >
+    <TouchableOpacity onPress={()=>{ExcersiseStore.setimg(item[1]);ExcersiseStore.settitle(item[0]);begin()}}>
       <Image source={{uri:item[1]} } style={{width:180,height:180}}></Image>
       <Text style={{paddingLeft:10,marginTop:140,position:'absolute',fontWeight:"300",color:'black',backgroundColor:'white',fontSize:18,width:180,paddingBottom:9,paddingTop:7}}>{item[0]}</Text>
     </TouchableOpacity>
@@ -284,7 +285,6 @@ rec.map(item=>(
 }
 </ScrollView>
 </View>
-
 
 
 </View>
