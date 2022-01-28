@@ -409,6 +409,7 @@ export default function Main({ navigation }) {
               borderTopColor: "black",
               borderTopWidth: 1,
               marginTop: 9,
+              fontWeight:"bold"
             }}
           >
             Recommended For You

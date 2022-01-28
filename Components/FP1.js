@@ -57,7 +57,7 @@ firebase.auth.sendPasswordResetEmail(otpaddress).then(()=>{console.log('sent!');
         <View style={{backgroundColor:'white', height:1200}}>
         <Image source={require("../assets/headerlogo.png")}  style={{ height:100, width: 150, marginTop:60, marginLeft:120}}/>
         
-        <View style={{backgroundColor:'#adacce', marginTop:100, marginLeft:20, marginRight:20, borderRadius:18}}>
+        <View style={{backgroundColor:'#d7edf0', marginTop:100, marginLeft:20, marginRight:20, borderRadius:18}}>
         <Text style={{marginTop:60,marginLeft:76, fontSize:24,fontWeight:'bold',marginBottom:44}}>Forget Password?</Text>
         <Text style={{marginLeft:75, marginTop:-40, fontSize:9, color:"grey"}}>Enter your email address below to reset your Password</Text>
         <TextInput
@@ -65,7 +65,7 @@ firebase.auth.sendPasswordResetEmail(otpaddress).then(()=>{console.log('sent!');
         onChangeText={setotpaddress}
         value={otpaddress}
         placeholder='Enter Email'
-        placeholderTextColor="white"
+        placeholderTextColor="black"
     
       />
 

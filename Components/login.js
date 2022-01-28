@@ -223,6 +223,7 @@ else{ setsigninvalid(true)
           {({ handleChange, handleSubmit, values, isValid }) => (
             <>
               <KeyboardAvoidingView behavior="position">
+              <View>
                 {signinvalid && (
                   <Text
                     style={{
@@ -248,8 +249,8 @@ else{ setsigninvalid(true)
                   name="email"
                   size={24}
                   color="white"
-                  style={{ marginLeft: 44, marginTop: -39 }}
-                />
+                  style={{ marginLeft: 37, marginTop: -32 }}
+                /></View>
                 <TextInput
                   style={styles.input1}
                   onChangeText={handleChange("password")}
@@ -262,14 +263,14 @@ else{ setsigninvalid(true)
                   name="lock1"
                   size={24}
                   color="white"
-                  style={{ marginLeft: 44, marginTop: -38 }}
+                  style={{ marginLeft: 37, marginTop: -39 }}
                 />
                 <Text
                   style={{
                     fontSize: 14,
                     color: "white",
                     marginLeft: 244,
-                    marginTop: 19,
+                    marginTop: 35,
                   }}
                   onPress={() => navigation.navigate("FP1")}
                 >
@@ -356,36 +357,32 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   input: {
-    height: 60,
-    marginLeft: 70,
-    marginTop: 270,
-    marginRight: 40,
-    borderWidth: 1,
-    borderRightColor: "white",
+    height: 50,
+    marginLeft:68,
+    marginTop:280,
+    marginRight:68,
+    borderLeftColor:'transparent',
+    borderRightColor:'transparent',
+    borderTopColor:'transparent',
     borderBottomColor: "white",
-    borderTopColor: "white",
-    borderLeftColor: "black",
-    borderTopLeftRadius: 1,
-    borderRadius: 19,
-    borderWidth: 4,
-    color: "white",
-    padding: 4,
+   borderRadius:3,
+   borderWidth:5,
+    padding:0,  
+    color:"white"
   },
   input1: {
-    height: 60,
-    marginLeft: 70,
-    marginTop: 40,
-    marginRight: 40,
-    color: "white",
-    borderWidth: 1,
-    borderRightColor: "white",
+    height: 50,
+    marginLeft:68,
+    marginTop:30,
+    marginRight:68,
+    borderLeftColor:'transparent',
+    borderRightColor:'transparent',
+    borderTopColor:'transparent',
     borderBottomColor: "white",
-    borderTopColor: "white",
-    borderLeftColor: "black",
-    borderTopLeftRadius: 0.7,
-    borderRadius: 19,
-    borderWidth: 4,
-    padding: 4,
+   borderRadius:3,
+   borderWidth:5,
+    padding:0,  
+    color:"white"
   },
   image: {
     flex: 1,
