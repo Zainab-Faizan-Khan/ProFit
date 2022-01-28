@@ -177,7 +177,9 @@ console.log("feedback submitted!");}
             backgroundColor: "#598094",
           }}
         >
-          <TouchableOpacity
+          <TouchableOpacity  onPress={() =>
+              Linking.openURL("https://profit-31897.web.app/home.html")
+            }
           >
             <Text
             style={{
@@ -314,9 +316,47 @@ console.log("feedback submitted!");}
           borderColor:'#598094'
         }}
       >
-      <Entypo name="new-message" size={30} color="black"  style={{ alignItems:"center", marginLeft:105,marginTop:hp('1%')}}  onPress={()=>navigation.navigate('Feedback')} />
-      <AntDesign name="home" size={30} color="black" style={{ alignItems:"center", marginLeft:175,marginTop:hp('-3.7%')}}  onPress={()=>navigation.navigate('Main')}/>
-      <AntDesign name="book" size={30} color="black" style={{ alignItems:"center", marginLeft:245,marginTop:hp('-3.7%')}} onPress={()=>navigation.navigate('EA')}/>  
+      <MaterialIcons
+          name="no-meals"
+          size={30}
+          color="black"
+          style={{
+            alignItems: "center",
+            marginLeft: 73,
+            marginTop: hp("0.7%"),
+          }}
+          onPress={() => navigation.navigate("Diet")}
+        />
+        <Entypo
+          name="new-message"
+          size={30}
+          color="black"
+          style={{ alignItems: "center", marginLeft: 140, marginTop: hp("-4%") }}
+          onPress={() => navigation.navigate("Feedback")}
+        />
+        <AntDesign
+          name="home"
+          size={33}
+          color="black"
+          style={{
+            alignItems: "center",
+            marginLeft: 205,
+            marginTop: hp("-4%"),
+          }}
+          onPress={() => navigation.navigate("Main")}
+        />
+        <AntDesign
+          name="book"
+          size={33}
+          color="black"
+          style={{
+            alignItems: "center",
+            marginLeft: 273,
+            marginTop: hp("-4%"),
+          }}
+          onPress={() => navigation.navigate("EA")}
+        />
+    
       </View> 
     
      

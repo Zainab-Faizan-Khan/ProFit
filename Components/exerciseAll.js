@@ -12,7 +12,7 @@ import React , {useState , useEffect} from 'react';
 import firebase from '../firebase';
 import { LogBox } from 'react-native';
 import { heightPercentageToDP } from 'react-native-responsive-screen';
-
+import { MaterialIcons } from '@expo/vector-icons';
 export default function EA({navigation}){
 LogBox.ignoreLogs(['Setting a timer']);
 
@@ -159,9 +159,46 @@ hi.map(item=>(
           borderColor:'#598094'
         }}
       >
-      <Entypo name="new-message" size={30} color="black"  style={{ alignItems:"center", marginLeft:105,marginTop:hp('1%')}}  onPress={()=>navigation.navigate('Feedback')} />
-      <AntDesign name="home" size={30} color="black" style={{ alignItems:"center", marginLeft:175,marginTop:hp('-3.7%')}}  onPress={()=>navigation.navigate('Main')}/>
-      <AntDesign name="book" size={30} color="black" style={{ alignItems:"center", marginLeft:245,marginTop:hp('-3.7%')}} onPress={()=>navigation.navigate('EA')}/>  
+       <MaterialIcons
+          name="no-meals"
+          size={30}
+          color="black"
+          style={{
+            alignItems: "center",
+            marginLeft: 73,
+            marginTop: hp("0.7%"),
+          }}
+          onPress={() => navigation.navigate("Diet")}
+        />
+        <Entypo
+          name="new-message"
+          size={30}
+          color="black"
+          style={{ alignItems: "center", marginLeft: 140, marginTop: hp("-4%") }}
+          onPress={() => navigation.navigate("Feedback")}
+        />
+        <AntDesign
+          name="home"
+          size={33}
+          color="black"
+          style={{
+            alignItems: "center",
+            marginLeft: 205,
+            marginTop: hp("-4%"),
+          }}
+          onPress={() => navigation.navigate("Main")}
+        />
+        <AntDesign
+          name="book"
+          size={33}
+          color="black"
+          style={{
+            alignItems: "center",
+            marginLeft: 273,
+            marginTop: hp("-4%"),
+          }}
+          onPress={() => navigation.navigate("EA")}
+        />
       </View> 
 
     </View>

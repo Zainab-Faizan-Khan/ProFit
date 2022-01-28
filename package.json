@@ -60,7 +60,8 @@
     "rn-range-slider": "^2.1.1",
     "socket.io-client": "^4.4.1",
     "year": "^0.2.1",
-    "yup": "^0.32.11"
+    "yup": "^0.32.11",
+    "expo-font": "~10.0.4"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

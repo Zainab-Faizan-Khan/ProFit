@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer,DarkTheme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import SplashScreen from './Components/SplashScreen';
 import Start from './Components/Start';
@@ -20,12 +20,13 @@ import Feedback from './Components/feedback';
 import EA from './Components/exerciseAll';
 import Sidenav from './Components/sideNav';
 import Detail from './Components/detail';
+import Diet from './Components/diet';
 const Stack = createStackNavigator();
 export default function App() {
   return (
     <SafeAreaProvider>
       <SplashScreen/> 
-    <NavigationContainer initialRouteName='Home'>
+    <NavigationContainer initialRouteName='Home' theme={DarkTheme}>
     <Stack.Navigator
 
   >
@@ -46,6 +47,7 @@ export default function App() {
       <Stack.Screen name="Feedback" component={Feedback} options={{ headerShown: false }} />
       <Stack.Screen name="EA" component={EA} options={{ headerShown: false }} />
       <Stack.Screen name="Sidenav" component={Sidenav} options={{ headerShown: false }} />
+      <Stack.Screen name="Diet" component={Diet} options={{ headerShown: false }} />
   
      
 

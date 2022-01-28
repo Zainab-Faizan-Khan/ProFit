@@ -248,7 +248,7 @@ else{ setsigninvalid(true)
                   name="email"
                   size={24}
                   color="white"
-                  style={{ marginLeft: 44, marginTop: -29 }}
+                  style={{ marginLeft: 44, marginTop: -39 }}
                 />
                 <TextInput
                   style={styles.input1}
@@ -262,14 +262,14 @@ else{ setsigninvalid(true)
                   name="lock1"
                   size={24}
                   color="white"
-                  style={{ marginLeft: 44, marginTop: -29 }}
+                  style={{ marginLeft: 44, marginTop: -38 }}
                 />
                 <Text
                   style={{
                     fontSize: 14,
                     color: "white",
                     marginLeft: 244,
-                    marginTop: 10,
+                    marginTop: 19,
                   }}
                   onPress={() => navigation.navigate("FP1")}
                 >
@@ -356,7 +356,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   input: {
-    height: 40,
+    height: 60,
     marginLeft: 70,
     marginTop: 270,
     marginRight: 40,
@@ -372,7 +372,7 @@ const styles = StyleSheet.create({
     padding: 4,
   },
   input1: {
-    height: 40,
+    height: 60,
     marginLeft: 70,
     marginTop: 40,
     marginRight: 40,
