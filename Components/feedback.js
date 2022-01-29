@@ -298,27 +298,66 @@ console.log("feedback submitted!");}
            </View>
           </View>
 </KeyboardAvoidingView>
-      <View
+<View
         style={{
           height: 200,
-          width: wp('100%'),
-          backgroundColor: "transparent",
+          width: wp("100%"),
+          backgroundColor: "#d7edf0",
           borderRadius: 80,
-          
-          borderLeftWidth:20,
-          borderRightWidth:20,
-          borderTopWidth:5,
-          marginBottom:0,
-          marginTop: hp('99%'),
+
+          borderLeftWidth: 20,
+          borderRightWidth: 20,
+          borderTopWidth: 5,
+          marginBottom: 0,
+          marginTop: hp("99%"),
           position: "absolute",
-          borderColor:'#598094'
+          borderColor: "#598094",
         }}
       >
-      <Entypo name="new-message" size={30} color="black"  style={{ alignItems:"center", marginLeft:105,marginTop:hp('1%')}}  onPress={()=>navigation.navigate('Feedback')} />
-      <AntDesign name="home" size={30} color="black" style={{ alignItems:"center", marginLeft:175,marginTop:hp('-3.7%')}}  onPress={()=>navigation.navigate('Main')}/>
-      <AntDesign name="book" size={30} color="black" style={{ alignItems:"center", marginLeft:245,marginTop:hp('-3.7%')}} onPress={()=>navigation.navigate('EA')}/>  
-      </View> 
-    
+      <MaterialIcons
+          name="no-meals"
+          size={30}
+          color="black"
+          style={{
+            alignItems: "center",
+            marginLeft: 73,
+            marginTop: hp("0.7%"),
+          }}
+          onPress={() => navigation.navigate("Diet")}
+        />
+        <Entypo
+          name="new-message"
+          size={30}
+          color="black"
+          style={{ alignItems: "center", marginLeft: 140, marginTop: hp("-4%") }}
+          onPress={() => navigation.navigate("Feedback")}
+        />
+        <AntDesign
+          name="home"
+          size={30}
+          color="black"
+          style={{
+            alignItems: "center",
+            marginLeft: 205,
+            marginTop: hp("-4%"),
+          }}
+          onPress={() => navigation.navigate("Main")}
+        />
+        <AntDesign
+          name="book"
+          size={30}
+          color="black"
+          style={{
+            alignItems: "center",
+            marginLeft: 273,
+            marginTop: hp("-3.7%"),
+          }}
+          onPress={() => navigation.navigate("EA")}
+        />
+         
+        
+        
+      </View>
      
     
     </View>

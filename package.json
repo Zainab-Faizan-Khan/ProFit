@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "-": "0.0.1",
+    "@chartiful/react-native-chart-builder": "^0.1.8",
+    "@chartiful/react-native-line-graph": "^0.1.2",
     "@expo/vector-icons": "^12.0.5",
     "@react-native-community/clipboard": "^1.5.1",
     "@react-native-community/datetimepicker": "4.0.0",
@@ -26,6 +28,7 @@
     "email-validator": "^2.0.4",
     "expo": "~44.0.0",
     "expo-facebook": "^12.1.0",
+    "expo-font": "^10.0.4",
     "expo-google-app-auth": "^9.0.0",
     "expo-image-picker": "^12.0.1",
     "expo-status-bar": "~1.2.0",

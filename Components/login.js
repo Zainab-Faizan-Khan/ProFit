@@ -64,12 +64,23 @@ LogBox.ignoreLogs(['Each child in a list']);
                 User.setgender(doc.data().gender)
                 User.setimg(doc.data().img)
                 User.setid(doc.id)
+                User.setfno(doc.data().fno)
+User.setwater(doc.data().water)
+User.setdat(doc.data().cdate)
+User.setdates(0,doc.data().one)
+User.setdates(1,doc.data().two)
+User.setdates(2,doc.data().three)
+User.setdates(3,doc.data().four)
+User.setdates(4,doc.data().five)
+User.setdates(5,doc.data().six)
+User.setdates(6,doc.data().seven)
                 
         var g=""
         var r=[]
         if(User.getgoal()=="strong"){g="strong"}
         else if(User.getgoal()=="loose"){g="loose"}
         else{g="maintain"}
+console.log(User.getgoal())
         firebase.db.collection(g).onSnapshot((snapshot)=>{snapshot.forEach(doc=>{
 
 const title=doc.data().title
@@ -110,7 +121,17 @@ User.setrecommend(r)
                 User.setheight(doc.data().height)
 User.setimg(doc.data().img)
                 User.setid(doc.id)
+User.setwater(doc.data().water)
                 User.setgender(doc.data().gender)
+User.setdates(0,doc.data().one)
+User.setdates(1,doc.data().two)
+User.setdates(2,doc.data().three)
+User.setdates(3,doc.data().four)
+User.setdates(4,doc.data().five)
+User.setdates(5,doc.data().six)
+User.setdates(6,doc.data().seven)
+User.setdat(doc.data().cdate)
+User.setfno(doc.data().fno)
         var g=""
         var r=[]
         if(User.getgoal()=="strong"){g="strong"}
@@ -162,6 +183,17 @@ User.setimg(doc.data().img)
                 User.setdiet(doc.data().diet)
                 User.setheight(doc.data().height)
                 User.setgender(doc.data().gender)
+User.setdat(doc.data().cdate)
+User.setwater(doc.data().water)
+User.setdates(0,doc.data().one)
+User.setdates(1,doc.data().two)
+User.setdates(2,doc.data().three)
+User.setdates(3,doc.data().four)
+User.setdates(4,doc.data().five)
+User.setdates(5,doc.data().six)
+User.setfno(doc.data().fno)
+User.setdates(6,doc.data().seven)
+
         var g=""
         var r=[]
         if(User.getgoal()=="strong"){g="strong"}
@@ -193,17 +225,9 @@ else{ setsigninvalid(true)
     }
   }
 
-  async function getUserData() {
-    let userInfoResponse = await fetch(
-      "https://www.googleapis.com/userinfo/v2/me",
-      {
-        headers: { Authorization: `Bearer ${accessToken}` },
-      }
-    );
-    console.log((await userInfoResponse.json()))
-  }
 
-  
+
+
 
   return (
     <View style={{ backgroundColor: "black", height: 1000 }}>
@@ -248,7 +272,7 @@ else{ setsigninvalid(true)
                   name="email"
                   size={24}
                   color="white"
-                  style={{ marginLeft: 44, marginTop: -29 }}
+                  style={{ marginLeft: 37, marginTop: -32 }}
                 />
                 <TextInput
                   style={styles.input1}
@@ -262,7 +286,7 @@ else{ setsigninvalid(true)
                   name="lock1"
                   size={24}
                   color="white"
-                  style={{ marginLeft: 44, marginTop: -29 }}
+                  style={{ marginLeft: 37, marginTop: -39 }}
                 />
                 <Text
                   style={{
@@ -356,36 +380,36 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   input: {
-    height: 40,
-    marginLeft: 70,
-    marginTop: 270,
-    marginRight: 40,
-    borderWidth: 1,
-    borderRightColor: "white",
+    height: 50,
+    marginLeft: 68,
+    marginTop: 280,
+    marginRight: 68,
+    borderWidth: 5,
+    borderRightColor: "transparent",
     borderBottomColor: "white",
-    borderTopColor: "white",
-    borderLeftColor: "black",
-    borderTopLeftRadius: 1,
-    borderRadius: 19,
-    borderWidth: 4,
+    borderTopColor: "transparent",
+    borderLeftColor: "transparent",
+    
+    borderRadius: 3,
+ 
     color: "white",
-    padding: 4,
+    padding: 0,
   },
   input1: {
-    height: 40,
-    marginLeft: 70,
-    marginTop: 40,
-    marginRight: 40,
+    height: 50,
+    marginLeft: 68,
+    marginTop: 30,
+    marginRight: 68,
     color: "white",
-    borderWidth: 1,
-    borderRightColor: "white",
+ 
+    borderRightColor: "transparent",
     borderBottomColor: "white",
-    borderTopColor: "white",
-    borderLeftColor: "black",
-    borderTopLeftRadius: 0.7,
-    borderRadius: 19,
-    borderWidth: 4,
-    padding: 4,
+    borderTopColor: "transparent",
+    borderLeftColor: "transparent",
+    
+    borderRadius: 3,
+    borderWidth: 5,
+    padding: 0,
   },
   image: {
     flex: 1,

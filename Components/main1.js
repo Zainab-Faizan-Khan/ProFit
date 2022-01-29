@@ -29,6 +29,7 @@ import even from "../assets/even.png"
 import night from "../assets/night.png"
 
 
+
 export default function Main({ navigation }) {
 LogBox.ignoreLogs(['Setting a timer']);
     LogBox.ignoreLogs(['Each child in a list']);
@@ -36,36 +37,79 @@ LogBox.ignoreLogs(['Setting a timer']);
 const [msg,setmsg]=React.useState()
 const [erx,seterx]=React.useState([])
 
+function getrand(min,max){
+return Math.floor(Math.random()*(max-min+1))+min
+}
+
+function dateset(){
+var d=new Date()
+var da=`${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()}`
+if(User.getdat()==da){
 
 
+
+}
+else{
+
+r=getrand(0,6)
+User.setfno(r)
+
+
+firebase.db.collection('users').doc(User.getid()).update({
+water:0,
+fno:r,
+cdate:da,
+one:0,
+two:User.getdates(0),
+three:User.getdates(1),
+four:User.getdates(2),
+five:User.getdates(3),
+six:User.getdates(4),
+seven:User.getdates(5),
+})
+User.setdat(da)
+User.setdates(0,0)
+User.setfno(r)
+User.setwater(0)
+User.setdates(1,User.getdates(0))
+User.setdates(2,User.getdates(1))
+User.setdates(3,User.getdates(2))
+User.setdates(4,User.getdates(3))
+User.setdates(5,User.getdates(4))
+User.setdates(6,User.getdates(5))
+}
+}
 
  function getexcersises (){ 
 var er=[]
+
 var e=[]
 try{
 
 
-
-    firebase.db.collectionGroup('myexer').onSnapshot((snapshot)=>{snapshot.forEach(doc=>{
-if(doc){
+    firebase.db.collectionGroup('Logs').onSnapshot((snapshot)=>{snapshot.forEach(doc=>{
+if(doc.data().email==User.getemail()){
 const title=doc.data().title
 const img=doc.data().img
-
+if(e.includes(doc.data().title)){}
+else{
 er.push([title,img])
 e.push(title)
 }
-else{setmsg("You dont have any excersises at the moment")}
+}
+
+else{}
 })
 
-seterx(er)
+seterx(er);
+if(!er.length){setmsg("You have no excersise at the moment")}
 
-User.sete(e)
 }); //TODO: add query if needed
  
 
 
  }catch(err){
-  res.status(500).send(err);
+  console.log(err)
  }
 
 }
@@ -101,14 +145,15 @@ useEffect(() => {
 
 var hours = new Date().getHours();
 
-if(hours<12 ){setgreetings("GOOD MORNING!");seti(morn)}
-else if(hours<17 ){setgreetings("GOOD AFTERNOON!");seti(after)}
-else if(hours<20 ){setgreetings("GOOD EVENING!");seti(even)}
+if(hours<12 & hours>5 ){setgreetings("GOOD MORNING!");seti(morn)}
+else if(hours<17 & hours>11 ){setgreetings("GOOD AFTERNOON!");seti(after)}
+else if(hours<20 & hours>16 ){setgreetings("GOOD EVENING!");seti(even)}
 else{setgreetings("GOOD NIGHT!");seti(night)}
+dateset()
+
+
+},[])
 getexcersises()
-
-})
-
   return (
    
     <View style={{ backgroundColor: "#d7edf0", height: 2000 }}>
@@ -291,31 +336,66 @@ User.getrecommend().map(item=>(
 </ScrollView>
 
 
-
-
-
-
-      <View
+<View
         style={{
           height: 200,
-          width: wp('100%'),
+          width: wp("100%"),
           backgroundColor: "#d7edf0",
           borderRadius: 80,
-          
-          borderLeftWidth:20,
-          borderRightWidth:20,
-          borderTopWidth:5,
-          marginBottom:0,
-          marginTop: hp('99%'),
+
+          borderLeftWidth: 20,
+          borderRightWidth: 20,
+          borderTopWidth: 5,
+          marginBottom: 0,
+          marginTop: hp("99%"),
           position: "absolute",
-          borderColor:'#598094'
+          borderColor: "#598094",
         }}
       >
-      <Entypo name="new-message" size={30} color="black"  style={{ alignItems:"center", marginLeft:105,marginTop:hp('1%')}}  onPress={()=>navigation.navigate('Feedback')} />
-      <AntDesign name="home" size={30} color="black" style={{ alignItems:"center", marginLeft:175,marginTop:hp('-3.7%')}}  onPress={()=>navigation.navigate('Main')}/>
-      <AntDesign name="book" size={30} color="black" style={{ alignItems:"center", marginLeft:245,marginTop:hp('-3.7%')}} onPress={()=>navigation.navigate('EA')}/>  
-      </View> 
-    
+      <MaterialIcons
+          name="no-meals"
+          size={30}
+          color="black"
+          style={{
+            alignItems: "center",
+            marginLeft: 73,
+            marginTop: hp("0.7%"),
+          }}
+          onPress={() => navigation.navigate("Diet")}
+        />
+        <Entypo
+          name="new-message"
+          size={30}
+          color="black"
+          style={{ alignItems: "center", marginLeft: 140, marginTop: hp("-4%") }}
+          onPress={() => navigation.navigate("Feedback")}
+        />
+        <AntDesign
+          name="home"
+          size={30}
+          color="black"
+          style={{
+            alignItems: "center",
+            marginLeft: 205,
+            marginTop: hp("-4%"),
+          }}
+          onPress={() => navigation.navigate("Main")}
+        />
+        <AntDesign
+          name="book"
+          size={30}
+          color="black"
+          style={{
+            alignItems: "center",
+            marginLeft: 273,
+            marginTop: hp("-3.7%"),
+          }}
+          onPress={() => navigation.navigate("EA")}
+        />
+         
+        
+        
+      </View>
      
     </View>
   );

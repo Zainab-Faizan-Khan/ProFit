@@ -1,8 +1,11 @@
-
-import React, { useRef, useState } from "react";
+import LineGraph from '@chartiful/react-native-line-graph'
+import React, { useRef, useState ,useEffect} from "react";
 import User from "./User";
 import firebase from '../firebase';
 import { LogBox } from 'react-native';
+import { useFonts } from 'expo-font';
+import water from '../assets/water.png'
+import { Entypo } from "@expo/vector-icons";
 import {
   Animated,
   Image,
@@ -10,7 +13,7 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,TextInput,
-  View,
+  View,ScrollView
 } from "react-native";
 import {
   widthPercentageToDP as wp,
@@ -82,6 +85,11 @@ setifw(false)
 }
 
 
+
+
+
+
+
     const [showMenu, setShowMenu] = useState(false);
 
   // Animated Properties...
@@ -91,7 +99,39 @@ setifw(false)
   const scaleValue = useRef(new Animated.Value(1)).current;
   const closeButtonOffset = useRef(new Animated.Value(0)).current;
     const [currentTab, setCurrentTab] = useState("Main");
-  return (
+
+
+
+
+
+const [c,setc]=React.useState(User.getwater())
+
+async function increasewater(){
+
+User.setwater(User.getwater()+1)
+setc(User.getwater())
+await firebase.db.collection('users').doc(User.getid()).update({water:User.getwater()})
+sewc()
+}
+
+const [wc,setwc]=React.useState([])
+
+function sewc(){
+var x=[]
+for (let i=0;i < User.getwater();i++){
+
+x.push("a")
+}
+setwc(x)
+console.log(wc)
+}
+useEffect (async ()=>{await sewc()},[])
+
+if(wc.length==0){
+sewc()
+}
+
+return (
     <SafeAreaView>
      
       
@@ -157,8 +197,11 @@ setifw(false)
   
         </View>
           </TouchableOpacity>
-
-          <TouchableOpacity onPress={() => navigation.navigate("EA")}>
+          <TouchableOpacity
+            onPress={() =>
+              Linking.openURL("https://profit-31897.web.app/home.html")
+            }
+          >
           <View style={{
           flexDirection: "row",
           alignItems: 'center',
@@ -308,10 +351,10 @@ setifw(false)
         <View
           style={{
             backgroundColor: "#7aa0b4",
-            height: hp("38%"),
-            width: wp("53%"),
+            height: hp("36%"),
+            width: wp("58%"),
             marginLeft: wp("38%"),
-            marginTop: 30,
+            marginTop: 1,
             alignItems: "center",
             position: "absolute",
           }}
@@ -339,7 +382,7 @@ setifw(false)
           <Text
             style={{
               marginTop: hp("2%"),
-              fontSize: 18,
+              fontSize: 15,
               textAlign: "center",
               fontStyle: "italic",
             }}
@@ -348,20 +391,52 @@ setifw(false)
           </Text>
         </View>
 
-        <Ionicons
-          name="ios-bookmark"
-          size={30}
-          color="black"
-          style={{ marginLeft: 258, marginTop: 327, position: "absolute" }}
-        />
+        
       </View>
       
+<View style={{width:360,height:100,position:'absolute',marginLeft:20,marginTop:330}}>
+<Text style={{fontSize:20,marginTop:10,fontWeight: "bold"}}>Your Daily Water Tracker</Text>
+<Text style={{fontSize:20,position:'absolute',marginLeft:285,fontWeight: "bold",marginTop:10}}>{c}</Text>
+<TouchableOpacity style={{backgroundColor:"blue",height:40,width:40 , position:'absolute',marginLeft:320,marginTop:6}} onPress={() => {
+                increasewater()
+              }}></TouchableOpacity>
+<ScrollView horizontal={true} style={{borderBottomColor:'black',borderBottomWidth:3,marginBottom:8}}>
+
+{wc.map(item=>
+
+<View style={{width:55}}>       
+
+          <Image source={water} style={{
+            width: 60, height: 60,
+         
+          }}></Image>
+
+</View>
+
+)}
+
+
+
+
+
+</ScrollView>
+</View>
+
+
+
+
+
+
+
+
+
+
       <View
         style={{
           backgroundColor: "transparent",
           height: hp("8%"),
           width: wp("27%"),
-          marginTop: hp("10%"),
+          marginTop: hp("13%"),
           marginLeft: wp("6%"),
           borderWidth: 12,
           borderTopColor: "transparent",
@@ -370,15 +445,36 @@ setifw(false)
           borderRightColor: "#7aa0b4",
         }}
       >
-      <View style={{backgroundColor:"red",width:20,height:20,borderRadius:50,position:'absolute',marginLeft:-15}}><TouchableOpacity style={{backgroundColor:"red",width:20,height:20,borderRadius:5}} onPress={()=>{setifh(true)}} ></TouchableOpacity></View>
-        <Text
-          style={{
-            textAlign: "center",
-            fontWeight: "bold",
-            fontSize: 20,
-            color: "#25a0a3",
-          }}
-        >
+<View
+            style={{
+              backgroundColor: "transparent",
+              width: 20,
+              height: 20,
+              borderRadius: 50,
+              position: "absolute",
+              marginLeft: -15,
+            }}
+          >
+            <TouchableOpacity
+              style={{
+                backgroundColor: "transparent",
+                width: 25,
+                height: 30,
+                borderRadius: 5,
+              }}
+              onPress={() => {
+                setifh(true);
+              }}
+            ><Entypo name="edit" size={24} color="black" /></TouchableOpacity>
+          </View>
+          <Text
+            style={{
+              textAlign: "center",
+              fontWeight: "bold",
+              fontSize: 20,
+              color: "#25a0a3",
+            }}
+          >
           Height
         </Text>
         <Text
@@ -393,7 +489,7 @@ setifw(false)
           backgroundColor: "transparent",
           height: hp("8%"),
           width: wp("27%"),
-          marginTop: hp('51%'),
+          marginTop: hp('54%'),
           marginLeft: wp("37%"),
           position: "absolute",
           borderWidth: 12,
@@ -429,7 +525,29 @@ setifw(false)
           marginLeft: wp("57%"),
         }}
       >
-      <View style={{backgroundColor:"red",width:20,height:20,borderRadius:50,position:'absolute',marginLeft:5,marginTop: 10}}><TouchableOpacity style={{backgroundColor:"red",width:20,height:20,borderRadius:5}} onPress={()=>{setifw(true)}}></TouchableOpacity></View>
+          <View
+            style={{
+              backgroundColor: "transparent",
+              width: 20,
+              height: 20,
+              borderRadius: 50,
+              position: "absolute",
+              marginLeft: 5,
+              marginTop: 10,
+            }}
+          >
+            <TouchableOpacity
+              style={{
+                backgroundColor: "transparent",
+                width: 25,
+                height: 30,
+                borderRadius: 5,
+              }}
+              onPress={() => {
+                setifw(true);
+              }}
+            ><Entypo name="edit" size={24} color="black" /></TouchableOpacity>
+          </View>
         <Text
           style={{
             textAlign: "center",
@@ -455,7 +573,7 @@ setifw(false)
         <Text
           style={{ color:'grey', fontSize: 13, fontStyle: "italic",marginLeft:20 }}
         >
-          This week
+          Last Seven days progress
         </Text>
       <View
         style={{
@@ -469,8 +587,42 @@ setifw(false)
           marginLeft:40
         }}
       ></View>
-
-
+<Text
+          style={{ color:'grey', fontSize: 13,marginLeft:32,position:'absolute',marginTop:580,zIndex:20 }}
+        >
+          Reps
+        </Text>
+<LineGraph
+  data={User.getdatap()}
+  width={300}
+  height={200}
+  lineColor='#Fdbfff'
+  dotColor='red'
+  lineWidth={2}
+  isBezier
+  hasDots={true}
+  baseConfig={{
+    startAtZero: false,
+    hasXAxisBackgroundLines: false,
+    xAxisLabelStyle: {
+      
+      offset: 0
+    }
+  }}
+  style={{
+    marginBottom: 30,
+    padding: 10,
+    paddingTop: 40,
+    borderRadius: 20,
+    width: 400,
+    backgroundColor: `#dbf0ef`
+  }}
+/>
+<Text
+          style={{ color:'grey', fontSize: 13,marginLeft:192,position:'absolute',marginTop:790,zIndex:20 }}
+        >
+          Days
+        </Text>
 {ifh && <>
 <View style={{backgroundColor:'#000', position:"absolute", height: hp("110%"),width: wp("100%"),opacity:0.4,justifyContent:'center'}}></View>
         <View style={{backgroundColor:'#fff', position:"absolute", height: hp("25%"),width: wp("65%"),marginTop:300,marginLeft:70,textAlign:'center'}}>
