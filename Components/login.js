@@ -65,6 +65,7 @@ LogBox.ignoreLogs(['Each child in a list']);
                 User.setimg(doc.data().img)
                 User.setid(doc.id)
                 User.setfno(doc.data().fno)
+
 User.setwater(doc.data().water)
 User.setdat(doc.data().cdate)
 User.setdates(0,doc.data().one)
@@ -80,7 +81,7 @@ User.setdates(6,doc.data().seven)
         if(User.getgoal()=="strong"){g="strong"}
         else if(User.getgoal()=="loose"){g="loose"}
         else{g="maintain"}
-console.log(User.getgoal())
+
         firebase.db.collection(g).onSnapshot((snapshot)=>{snapshot.forEach(doc=>{
 
 const title=doc.data().title
@@ -131,6 +132,7 @@ User.setdates(4,doc.data().five)
 User.setdates(5,doc.data().six)
 User.setdates(6,doc.data().seven)
 User.setdat(doc.data().cdate)
+
 User.setfno(doc.data().fno)
         var g=""
         var r=[]
@@ -192,6 +194,7 @@ User.setdates(3,doc.data().four)
 User.setdates(4,doc.data().five)
 User.setdates(5,doc.data().six)
 User.setfno(doc.data().fno)
+
 User.setdates(6,doc.data().seven)
 
         var g=""
@@ -238,7 +241,7 @@ else{ setsigninvalid(true)
         <Formik
           initialValues={{ email: "", password: "" }}
           onSubmit={(values) => {
-            console.log(values.email, values.password);
+            
             onlogin(values.email, values.password);
           }}
           validationSchema={LoginFormSchema}

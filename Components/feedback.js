@@ -177,7 +177,11 @@ console.log("feedback submitted!");}
             backgroundColor: "#598094",
           }}
         >
-          <TouchableOpacity
+          <TouchableOpacity onPress={() => {
+              Linking.openURL(
+                "https://profit-31897.web.app/"
+              );
+            }}
           >
             <Text
             style={{

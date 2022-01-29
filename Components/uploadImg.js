@@ -15,7 +15,7 @@ export default function UploadImage() {
     });
 
 
-    console.log(JSON.stringify(_image));
+    
    firebase.db.collection('users').doc(User.getid()).update({
 
 

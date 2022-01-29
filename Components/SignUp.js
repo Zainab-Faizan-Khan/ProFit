@@ -78,6 +78,7 @@ User.setdates(4,User.getdates(3))
 User.setdates(5,User.getdates(4))
 User.setdates(6,User.getdates(5))
 User.setfno(0)
+
 navigation.navigate('Main')
 
 

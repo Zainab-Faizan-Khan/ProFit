@@ -20,6 +20,7 @@ import Feedback from './Components/feedback';
 import EA from './Components/exerciseAll';
 import Sidenav from './Components/sideNav';
 import Detail from './Components/detail';
+
 import { NavigationContainer,DarkTheme } from '@react-navigation/native';
 const Stack = createStackNavigator();
 export default function App() {
