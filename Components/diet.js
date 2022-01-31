@@ -54,7 +54,7 @@ sets(true)
 
 }
 
-catch(e){console.log(e)}
+catch(e){}
 
 }
 

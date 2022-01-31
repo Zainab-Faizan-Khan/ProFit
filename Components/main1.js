@@ -109,7 +109,7 @@ if(!er.length){setmsg("You have no excersise at the moment")}
 
 
  }catch(err){
-  console.log(err)
+  
  }
 
 }

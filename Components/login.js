@@ -107,7 +107,7 @@ User.setrecommend(r)
   const onlogin = async (email, password) => {
     try {
       await firebase.auth.signInWithEmailAndPassword(email, password);
-      console.log("login successful");
+      
 
 
           firebase.db.collection('users').where("email",'==',email).get().then(snapshot=>{snapshot.forEach(doc=>{
@@ -153,7 +153,7 @@ User.setrecommend(r)
       
       setsigninvalid(false);
     } catch (error) {
-      console.log(error.message);
+      
       setsigninvalid(true);
       () => {
         values.email = "";
@@ -218,11 +218,11 @@ else{ setsigninvalid(true)
         
         setsigninvalid(false);
       } else {
-        console.log("permission denied");
+       
         setsigninvalid(true);
       }
     } catch (error) {
-      console.log(error);
+      
       navigation.navigate("Login");
       setsigninvalid(true);
     }

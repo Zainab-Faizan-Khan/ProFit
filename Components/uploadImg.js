@@ -14,7 +14,7 @@ export default function UploadImage() {
       quality: 1,
     });
 
-
+if(_image.uri){
     
    firebase.db.collection('users').doc(User.getid()).update({
 
@@ -29,9 +29,10 @@ User.setimg(_image.uri)
     if (!_image.cancelled) {
       setImage(_image.uri);
     }
-  };
-  
- 
+  }
+ else{} 
+  }
+
   return (
             <View style={imageUploaderStyles.container}>
                 

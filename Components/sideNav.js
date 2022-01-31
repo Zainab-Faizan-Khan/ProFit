@@ -29,7 +29,6 @@ import search from '../assets/search.png';
 import logout from '../assets/logout.png';
 import menu from '../assets/menu.png';
 import close from '../assets/close.png';
-import Pro from "./profile";
 
 export default function Sidenav({ navigation }) {
 LogBox.ignoreLogs(['Setting a timer']);

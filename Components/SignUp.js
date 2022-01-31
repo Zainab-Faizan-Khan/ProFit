@@ -36,7 +36,7 @@ if(email!==null|pw!==null|uname|null){
         setinvalid(false)
         seteinvalid(false)
          const authUser= await firebase.auth.createUserWithEmailAndPassword(email,pw)
-          console.log('user created')
+          
           firebase.db.collection('users').add({
               owner_uid:authUser.user.uid,
               username: uname,

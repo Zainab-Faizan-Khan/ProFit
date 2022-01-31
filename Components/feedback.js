@@ -30,7 +30,7 @@ function submitfeed(){
  firebase.db.collection('feedback').add({
               email:fmail,
               feedback: Feedback})
-console.log("feedback submitted!");}
+}
 
   return (
     <View style={{ backgroundColor: "#d7edf0", height: 2000 }}>

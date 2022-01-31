@@ -12,7 +12,7 @@ import Diet from './Components/diet';
 import Main from './Components/main1';
 import Login from './Components/login';
 import FP1 from './Components/FP1';
-import Pro from './Components/profile';
+
 import Exercise1 from './Components/Exercise1';
 import Exercise2 from './Components/Exercise2';
 import Exercise3 from './Components/Exercise3';
@@ -40,7 +40,7 @@ export default function App() {
       <Stack.Screen name="Main" component={Main} options={{ headerShown: false }} />
       <Stack.Screen name="FP1" component={FP1} options={{ headerShown: false }} />
      
-      <Stack.Screen name="Pro" component={Pro} options={{ headerShown: false }} />
+      
     
       <Stack.Screen name="Exercise1" component={Exercise1} options={{ headerShown: false }} />
       <Stack.Screen name="Exercise2" component={Exercise2} options={{ headerShown: false }} />
