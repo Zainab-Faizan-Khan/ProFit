@@ -21,13 +21,14 @@ import {
 } from "react-native-responsive-screen";
 import Circle from "./circle";
 import { Ionicons } from "@expo/vector-icons";
+import { FontAwesome } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 import home from "../assets/home.png";
 import search from '../assets/search.png';
 
 import logout from '../assets/logout.png';
 import menu from '../assets/menu.png';
 import close from '../assets/close.png';
-import Pro from "./profile";
 
 export default function Sidenav({ navigation }) {
 LogBox.ignoreLogs(['Setting a timer']);
@@ -123,14 +124,16 @@ for (let i=0;i < User.getwater();i++){
 x.push("a")
 }
 setwc(x)
-console.log(wc)
-}
-useEffect (async ()=>{await sewc()},[])
 
+}
+useEffect (()=>{sewc()},[])
+
+if(User.getwater()==0){}
+else{
 if(wc.length==0){
 sewc()
 }
-
+}
 return (
     <SafeAreaView>
      
@@ -397,9 +400,12 @@ return (
 <View style={{width:360,height:100,position:'absolute',marginLeft:20,marginTop:330}}>
 <Text style={{fontSize:20,marginTop:10,fontWeight: "bold"}}>Your Daily Water Tracker</Text>
 <Text style={{fontSize:20,position:'absolute',marginLeft:285,fontWeight: "bold",marginTop:10}}>{c}</Text>
-<TouchableOpacity style={{backgroundColor:"blue",height:40,width:40 , position:'absolute',marginLeft:320,marginTop:6}} onPress={() => {
+<TouchableOpacity style={{backgroundColor:"#7aa0b4",height:40,width:40 , position:'absolute',marginLeft:320,marginTop:6,borderRadius:50}} onPress={() => {
                 increasewater()
-              }}></TouchableOpacity>
+              }}>
+<AntDesign name="plus" size={24} color="white" style={{marginTop:9,marginLeft:8}}></AntDesign>
+
+</TouchableOpacity>
 <ScrollView horizontal={true} style={{borderBottomColor:'black',borderBottomWidth:3,marginBottom:8}}>
 
 {wc.map(item=>

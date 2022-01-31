@@ -42,8 +42,8 @@ else{
 navigation.navigate('Login')
 
 
-firebase.auth.sendPasswordResetEmail(otpaddress).then(()=>{console.log('sent!');navigation.navigate('Login')})
-.catch((err)=>{console.log(err.message)})
+firebase.auth.sendPasswordResetEmail(otpaddress).then(()=>{navigation.navigate('Login')})
+.catch((err)=>{})
 
   
 }

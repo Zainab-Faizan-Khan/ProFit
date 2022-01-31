@@ -12,12 +12,13 @@ import {
   View,
   TextInput,
   SafeAreaView,
-  ScrollView,
+  ScrollView,TouchableOpacity ,
   Image,
   FlatList,
 } from "react-native";
 import ExcersiseStore from "./ExcersiseStore";
 import User from "./User";
+
 
 
 export default function Detail({navigation}){
@@ -102,7 +103,15 @@ return(
 <>
 
 <Text style={{fontSize:15,marginBottom:2}}>Visit the below site and enter your code for Virtual Trainer </Text>
-<Text style={{fontSize:15,marginBottom:20}}> Click below to generate Code </Text>
+
+<TouchableOpacity onPress={() => {
+              Linking.openURL(
+                "https://www.linkedin.com/in/alishba-arshad-211148179/"
+              );
+            }}>
+<Text style={{fontSize:15,marginBottom:20}}> https://finalpf.herokuapp.com/ </Text>
+</TouchableOpacity>
+
 
 </>
 }

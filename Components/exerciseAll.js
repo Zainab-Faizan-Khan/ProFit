@@ -21,7 +21,7 @@ const [cexcer,setcexer]=React.useState(null)
 const [ctype,setctype]=React.useState(null)
 const [ccat,setccat]=React.useState(null)
 const [cimg,setcimg]=React.useState(null)
-console.log(User.getid())
+
 function d(){
 if(User.getchoice()=="Arms"){getCollectionarm()}
 else if(User.getchoice()=="Legs"){getCollectionleg()}
@@ -152,7 +152,7 @@ ExcersiseStore.settitle(cexcer)
 ExcersiseStore.setdate(date)
 ExcersiseStore.setimg(cimg)
 
-console.log(cexcer,date,cimg,User.getemail())
+
 
 navigation.navigate('Detail')
 

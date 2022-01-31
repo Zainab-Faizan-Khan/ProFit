@@ -30,7 +30,7 @@ function submitfeed(){
  firebase.db.collection('feedback').add({
               email:fmail,
               feedback: Feedback})
-console.log("feedback submitted!");}
+}
 
   return (
     <View style={{ backgroundColor: "#d7edf0", height: 2000 }}>
@@ -177,9 +177,17 @@ console.log("feedback submitted!");}
             backgroundColor: "#598094",
           }}
         >
+<<<<<<< HEAD
           <TouchableOpacity  onPress={() =>
               Linking.openURL("https://profit-31897.web.app/home.html")
             }
+=======
+          <TouchableOpacity onPress={() => {
+              Linking.openURL(
+                "https://profit-31897.web.app/"
+              );
+            }}
+>>>>>>> 9fc68388de480015e91a1c082f97b524e7e73464
           >
             <Text
             style={{

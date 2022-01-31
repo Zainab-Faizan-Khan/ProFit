@@ -36,7 +36,7 @@ if(email!==null|pw!==null|uname|null){
         setinvalid(false)
         seteinvalid(false)
          const authUser= await firebase.auth.createUserWithEmailAndPassword(email,pw)
-          console.log('user created')
+          
           firebase.db.collection('users').add({
               owner_uid:authUser.user.uid,
               username: uname,
@@ -78,6 +78,7 @@ User.setdates(4,User.getdates(3))
 User.setdates(5,User.getdates(4))
 User.setdates(6,User.getdates(5))
 User.setfno(0)
+
 navigation.navigate('Main')
 
 

@@ -1,5 +1,6 @@
 import React , {useState , useEffect} from 'react';
 import { StyleSheet, Text, View , Button, TouchableOpacity ,Image ,ScrollView} from 'react-native';
+import { FontAwesome } from '@expo/vector-icons';
 
 import { Entypo } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
@@ -53,7 +54,7 @@ sets(true)
 
 }
 
-catch(e){console.log(e)}
+catch(e){}
 
 }
 
@@ -102,8 +103,12 @@ useEffect(async () => {getall()},[])
               borderColor:'#25a0af'}}>
 
     <Text style={{fontSize:40,fontWeight:'bold', marginLeft:30,marginTop:60}}>DIET PLAN</Text>
-    <View style={{backgroundColor:"blue",width:40,height:40,borderRadius:50,position:'absolute',marginTop:80,marginLeft:320}}>
-          <TouchableOpacity style={{width:40,height:40}} onPress={()=>{getnewdiet()}}></TouchableOpacity>
+    <View style={{width:40,height:40,borderRadius:50,position:'absolute',marginTop:70,marginLeft:310}}>
+          <TouchableOpacity style={{width:40,height:40}} onPress={()=>{getnewdiet()}}>
+
+<FontAwesome name="refresh" size={24} color="white" style={{marginTop:9,marginLeft:8}}></FontAwesome>
+
+</TouchableOpacity>
     </View>
 
     <Text style={{marginLeft:30,}}>We got a special diet plan for you today !</Text>

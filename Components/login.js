@@ -65,6 +65,7 @@ LogBox.ignoreLogs(['Each child in a list']);
                 User.setimg(doc.data().img)
                 User.setid(doc.id)
                 User.setfno(doc.data().fno)
+
 User.setwater(doc.data().water)
 User.setdat(doc.data().cdate)
 User.setdates(0,doc.data().one)
@@ -80,7 +81,7 @@ User.setdates(6,doc.data().seven)
         if(User.getgoal()=="strong"){g="strong"}
         else if(User.getgoal()=="loose"){g="loose"}
         else{g="maintain"}
-console.log(User.getgoal())
+
         firebase.db.collection(g).onSnapshot((snapshot)=>{snapshot.forEach(doc=>{
 
 const title=doc.data().title
@@ -106,7 +107,7 @@ User.setrecommend(r)
   const onlogin = async (email, password) => {
     try {
       await firebase.auth.signInWithEmailAndPassword(email, password);
-      console.log("login successful");
+      
 
 
           firebase.db.collection('users').where("email",'==',email).get().then(snapshot=>{snapshot.forEach(doc=>{
@@ -131,6 +132,7 @@ User.setdates(4,doc.data().five)
 User.setdates(5,doc.data().six)
 User.setdates(6,doc.data().seven)
 User.setdat(doc.data().cdate)
+
 User.setfno(doc.data().fno)
         var g=""
         var r=[]
@@ -151,7 +153,7 @@ User.setrecommend(r)
       
       setsigninvalid(false);
     } catch (error) {
-      console.log(error.message);
+      
       setsigninvalid(true);
       () => {
         values.email = "";
@@ -192,6 +194,7 @@ User.setdates(3,doc.data().four)
 User.setdates(4,doc.data().five)
 User.setdates(5,doc.data().six)
 User.setfno(doc.data().fno)
+
 User.setdates(6,doc.data().seven)
 
         var g=""
@@ -215,11 +218,11 @@ else{ setsigninvalid(true)
         
         setsigninvalid(false);
       } else {
-        console.log("permission denied");
+       
         setsigninvalid(true);
       }
     } catch (error) {
-      console.log(error);
+      
       navigation.navigate("Login");
       setsigninvalid(true);
     }
@@ -238,7 +241,7 @@ else{ setsigninvalid(true)
         <Formik
           initialValues={{ email: "", password: "" }}
           onSubmit={(values) => {
-            console.log(values.email, values.password);
+            
             onlogin(values.email, values.password);
           }}
           validationSchema={LoginFormSchema}

@@ -18,6 +18,7 @@ var e=[]
 var dat=""
 var d=[0,0,0,0,0,0,0]
 var fno=0
+
 var getname=function(){return name}
 var setname=function(n){name=n}
 
@@ -77,6 +78,7 @@ getdat:getdat,
 setdat:setdat,
 getchoice:getchoice,
 setchoice: setchoice,
+
 gete:gete,
 sete: sete,
 setwater:setwater,

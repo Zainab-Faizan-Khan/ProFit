@@ -10,7 +10,7 @@ import {
   SafeAreaView,
   ScrollView,
   Image,
-  FlatList,
+  FlatList,BackHandler
 } from "react-native";
 import firebase from '../firebase';
 import { AntDesign } from '@expo/vector-icons';
@@ -109,7 +109,7 @@ if(!er.length){setmsg("You have no excersise at the moment")}
 
 
  }catch(err){
-  console.log(err)
+  
  }
 
 }
@@ -150,7 +150,8 @@ else if(hours<17 & hours>11 ){setgreetings("GOOD AFTERNOON!");seti(after)}
 else if(hours<20 & hours>16 ){setgreetings("GOOD EVENING!");seti(even)}
 else{setgreetings("GOOD NIGHT!");seti(night)}
 dateset()
-
+const backHandler = BackHandler.addEventListener('hardwareBackPress', () => true)
+      return () => backHandler.remove()
 
 },[])
 getexcersises()
