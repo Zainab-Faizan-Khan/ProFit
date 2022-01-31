@@ -29,7 +29,8 @@ const [diet,setdiet]=React.useState('nonveg')
 
 const [invalid,setinvalid]=React.useState(false)
 const [inevalid,seteinvalid]=React.useState(false)
-  const onsignup = async ()=>{
+  const onsignup = async ()=>{var d=new Date()
+var da=`${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()}`
 if(email!==null|pw!==null|uname|null){
       try{
         setinvalid(false)
@@ -46,11 +47,20 @@ if(email!==null|pw!==null|uname|null){
               height:cheight,
               goal:goal,
               diet:diet,
-              
+one:0,
+two:0,
+three:0,
+four:0,
+five:0,
+six:0,
+seven:0,
+    cdate:da,
+fno:0,
+    water:0          
 })
-console.log(uname,email,pw,cweight,gweight,goal,diet,cheight,checked)
-        
 
+        
+User.setwater(0)
  User.setname(uname)
         User.setemail(email)
         User.setcweight(cweight)
@@ -59,7 +69,15 @@ console.log(uname,email,pw,cweight,gweight,goal,diet,cheight,checked)
         User.setdiet(diet)
         User.setheight(cheight)
         User.setgender(checked)
-
+User.setdat(da)
+User.setdates(0,0)
+User.setdates(1,User.getdates(0))
+User.setdates(2,User.getdates(1))
+User.setdates(3,User.getdates(2))
+User.setdates(4,User.getdates(3))
+User.setdates(5,User.getdates(4))
+User.setdates(6,User.getdates(5))
+User.setfno(0)
 navigation.navigate('Main')
 
 

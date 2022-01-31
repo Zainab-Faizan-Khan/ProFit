@@ -252,7 +252,7 @@ const styles = StyleSheet.create({
   },
   modalContainer: {
     width: "80%",
-    backgroundColor: "white",
+    backgroundColor: "#25a0af",
     paddingHorizontal: 20,
     paddingVertical: 30,
     borderRadius: 20,

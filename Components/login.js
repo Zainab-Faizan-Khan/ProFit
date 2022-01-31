@@ -64,12 +64,23 @@ LogBox.ignoreLogs(['Each child in a list']);
                 User.setgender(doc.data().gender)
                 User.setimg(doc.data().img)
                 User.setid(doc.id)
+                User.setfno(doc.data().fno)
+User.setwater(doc.data().water)
+User.setdat(doc.data().cdate)
+User.setdates(0,doc.data().one)
+User.setdates(1,doc.data().two)
+User.setdates(2,doc.data().three)
+User.setdates(3,doc.data().four)
+User.setdates(4,doc.data().five)
+User.setdates(5,doc.data().six)
+User.setdates(6,doc.data().seven)
                 
         var g=""
         var r=[]
         if(User.getgoal()=="strong"){g="strong"}
         else if(User.getgoal()=="loose"){g="loose"}
         else{g="maintain"}
+console.log(User.getgoal())
         firebase.db.collection(g).onSnapshot((snapshot)=>{snapshot.forEach(doc=>{
 
 const title=doc.data().title
@@ -110,7 +121,17 @@ User.setrecommend(r)
                 User.setheight(doc.data().height)
 User.setimg(doc.data().img)
                 User.setid(doc.id)
+User.setwater(doc.data().water)
                 User.setgender(doc.data().gender)
+User.setdates(0,doc.data().one)
+User.setdates(1,doc.data().two)
+User.setdates(2,doc.data().three)
+User.setdates(3,doc.data().four)
+User.setdates(4,doc.data().five)
+User.setdates(5,doc.data().six)
+User.setdates(6,doc.data().seven)
+User.setdat(doc.data().cdate)
+User.setfno(doc.data().fno)
         var g=""
         var r=[]
         if(User.getgoal()=="strong"){g="strong"}
@@ -162,6 +183,17 @@ User.setimg(doc.data().img)
                 User.setdiet(doc.data().diet)
                 User.setheight(doc.data().height)
                 User.setgender(doc.data().gender)
+User.setdat(doc.data().cdate)
+User.setwater(doc.data().water)
+User.setdates(0,doc.data().one)
+User.setdates(1,doc.data().two)
+User.setdates(2,doc.data().three)
+User.setdates(3,doc.data().four)
+User.setdates(4,doc.data().five)
+User.setdates(5,doc.data().six)
+User.setfno(doc.data().fno)
+User.setdates(6,doc.data().seven)
+
         var g=""
         var r=[]
         if(User.getgoal()=="strong"){g="strong"}
@@ -193,17 +225,9 @@ else{ setsigninvalid(true)
     }
   }
 
-  async function getUserData() {
-    let userInfoResponse = await fetch(
-      "https://www.googleapis.com/userinfo/v2/me",
-      {
-        headers: { Authorization: `Bearer ${accessToken}` },
-      }
-    );
-    console.log((await userInfoResponse.json()))
-  }
 
-  
+
+
 
   return (
     <View style={{ backgroundColor: "black", height: 1000 }}>
@@ -250,7 +274,7 @@ else{ setsigninvalid(true)
                   size={24}
                   color="white"
                   style={{ marginLeft: 37, marginTop: -32 }}
-                /></View>
+                />
                 <TextInput
                   style={styles.input1}
                   onChangeText={handleChange("password")}
@@ -335,6 +359,7 @@ else{ setsigninvalid(true)
                 >
                   Register Now!
                 </Text>
+                </View>
               </KeyboardAvoidingView>
             </>
           )}
@@ -358,31 +383,35 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 50,
-    marginLeft:68,
-    marginTop:280,
-    marginRight:68,
-    borderLeftColor:'transparent',
-    borderRightColor:'transparent',
-    borderTopColor:'transparent',
+    marginLeft: 68,
+    marginTop: 280,
+    marginRight: 68,
+    borderWidth: 5,
+    borderRightColor: "transparent",
     borderBottomColor: "white",
-   borderRadius:3,
-   borderWidth:5,
-    padding:0,  
-    color:"white"
+    borderTopColor: "transparent",
+    borderLeftColor: "transparent",
+    
+    borderRadius: 3,
+ 
+    color: "white",
+    padding: 0,
   },
   input1: {
     height: 50,
-    marginLeft:68,
-    marginTop:30,
-    marginRight:68,
-    borderLeftColor:'transparent',
-    borderRightColor:'transparent',
-    borderTopColor:'transparent',
+    marginLeft: 68,
+    marginTop: 30,
+    marginRight: 68,
+    color: "white",
+ 
+    borderRightColor: "transparent",
     borderBottomColor: "white",
-   borderRadius:3,
-   borderWidth:5,
-    padding:0,  
-    color:"white"
+    borderTopColor: "transparent",
+    borderLeftColor: "transparent",
+    
+    borderRadius: 3,
+    borderWidth: 5,
+    padding: 0,
   },
   image: {
     flex: 1,

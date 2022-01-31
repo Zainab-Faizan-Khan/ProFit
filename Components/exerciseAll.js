@@ -21,11 +21,17 @@ const [cexcer,setcexer]=React.useState(null)
 const [ctype,setctype]=React.useState(null)
 const [ccat,setccat]=React.useState(null)
 const [cimg,setcimg]=React.useState(null)
+console.log(User.getid())
+function d(){
+if(User.getchoice()=="Arms"){getCollectionarm()}
+else if(User.getchoice()=="Legs"){getCollectionleg()}
+else if(User.getchoice()=="Body"){getCollectionbody()}
+else if(User.getchoice()=="Yoga"){getCollectionyoga()}
+else{getCollectionarm ()}
+}
 
 
-
-
-useEffect (async ()=>{getCollectionarm()},[])
+useEffect (()=>{d()},[])
 
 async function getCollectionarm (){ 
 var h=[]
@@ -55,6 +61,61 @@ sethj(h)
 
 }
 
+async function getCollectionbody (){ 
+var h=[]
+try{
+
+   await firebase.db.collection('Body').onSnapshot((snapshot)=>{snapshot.forEach(doc=>{
+
+const title=doc.data().title
+const category=doc.data().category
+const img=doc.data().img
+
+h.push([title,category,img,'Full Body'])
+if(title=="Shin Box"){setccat(category);setcexer(title);setcimg(img);setctype("Full Body")}
+
+})
+
+sethj(h)
+
+
+}); //TODO: add query if needed
+ 
+
+
+ }catch(err){
+  res.status(500).send(err);
+ }
+
+}
+
+async function getCollectionyoga (){ 
+var h=[]
+try{
+
+   await firebase.db.collection('Yoga').onSnapshot((snapshot)=>{snapshot.forEach(doc=>{
+
+const title=doc.data().title
+const category=doc.data().category
+const img=doc.data().img
+
+h.push([title,category,img,'Yoga'])
+if(title=="Lunge"){setccat(category);setcexer(title);setcimg(img);setctype("Yoga")}
+
+})
+
+sethj(h)
+
+
+}); //TODO: add query if needed
+ 
+
+
+ }catch(err){
+  res.status(500).send(err);
+ }
+
+}
 
 async function getCollectionleg (){ 
 var h=[]
@@ -105,12 +166,12 @@ return(
         <View style={{justifyContent:'center',alignItems:'center'}}><TouchableOpacity style={styles.op} onPress={()=>{getCollectionarm()}}><Image style={{height:70,width:70}} source={{uri:"https://tse2.mm.bing.net/th?id=OIP.AKljJEmMUJOgX5hlUU8OKAHaEG&pid=Api&P=0&w=321&h=177"} } resizeMode='stretch'></Image></TouchableOpacity><Text >Arms</Text></View>
 
         <View style={{justifyContent:'center',alignItems:'center'}}><TouchableOpacity style={styles.op} onPress={()=>getCollectionleg()}><Image style={{height:70,width:70}} source={{uri:"https://tse3.mm.bing.net/th?id=OIP.avNDsChtXFxlwuAd3HoBDQHaFj&pid=Api&P=0&w=223&h=167"} } resizeMode='stretch'></Image></TouchableOpacity><Text >Legs</Text></View>
-        <View style={{justifyContent:'center',alignItems:'center'}}><TouchableOpacity style={styles.op}><Image style={{height:70,width:70}} source={{uri:"https://tse3.mm.bing.net/th?id=OIP.SXnJ5uZ20hhbOfpogg_ADgHaE8&pid=Api&P=0&w=231&h=154"} } resizeMode='stretch'></Image></TouchableOpacity>< Text >Full Body</Text></View>
-        <View style={{justifyContent:'center',alignItems:'center'}}><TouchableOpacity style={styles.op}><Image style={{height:70,width:70}} source={{uri:"https://tse3.mm.bing.net/th?id=OIP.0gUwMZ8dPpJ_j0_LF5ygDwHaE8&pid=Api&P=0&w=282&h=188"} } resizeMode='stretch'></Image></TouchableOpacity><Text >Yoga</Text></View>
+        <View style={{justifyContent:'center',alignItems:'center'}}><TouchableOpacity style={styles.op} onPress={()=>getCollectionbody()}><Image style={{height:70,width:70}} source={{uri:"https://tse3.mm.bing.net/th?id=OIP.SXnJ5uZ20hhbOfpogg_ADgHaE8&pid=Api&P=0&w=231&h=154"} } resizeMode='stretch'></Image></TouchableOpacity>< Text >Full Body</Text></View>
+        <View style={{justifyContent:'center',alignItems:'center'}}><TouchableOpacity style={styles.op} onPress={()=>getCollectionyoga()}><Image style={{height:70,width:70}} source={{uri:"https://tse3.mm.bing.net/th?id=OIP.0gUwMZ8dPpJ_j0_LF5ygDwHaE8&pid=Api&P=0&w=282&h=188"} } resizeMode='stretch'></Image></TouchableOpacity><Text >Yoga</Text></View>
         
       </View>
-      <View style={{backgroundColor:"red" ,width:384,height:300,marginTop:40,marginLeft:-35 ,flexDirection:"row"}}>
-      <View style={{backgroundColor:"yellow", width:384/2,height:300}}>
+      <View style={{backgroundColor:"#25a0af" ,width:384,height:300,marginTop:40,marginLeft:-35 ,flexDirection:"row"}}>
+      <View style={{backgroundColor:"#25a0af", width:384/2,height:300}}>
 <Image style={{ width:384/2,height:300}} source={{uri:cimg} } resizeMode='stretch'></Image>
 </View>
       < View style={{backgroundColor:"#25a0af", width:384/2,height:300,flexDirection:"column",justifyContent:'center',alignItems:'center'}}>
@@ -135,7 +196,8 @@ hi.map(item=>(
 <View style={{backgroundColor:"red" ,height:80,marginTop:40,width:80,flexDirection:'row',marginRight:10,borderRadius:20,overflow:'hidden' }}>
     <TouchableOpacity onPress={()=>{let exer=item[0];setcexer(exer); let ty=item[3];setctype(ty);let cat=item[1];setccat(cat);let i=item[2];setcimg(i)}}>
       <Image source={{uri:item[2]} } style={{width:80,height:80}}></Image>
-      <Text style={{paddingLeft:10,marginTop:20,position:'absolute',fontWeight:"300",color:'blue'}}>{item[0]}</Text>
+      <View style={{position:'absolute', width:80 , height:80, backgroundColor:'black',opacity:0.3}}></View>
+      <Text style={{paddingLeft:10,marginTop:20,position:'absolute',fontWeight:"300",color:'white'}}>{item[0]}</Text>
     </TouchableOpacity>
 </View>))
 
@@ -146,20 +208,20 @@ hi.map(item=>(
       <View
         style={{
           height: 200,
-          width: wp('100%'),
+          width: wp("100%"),
           backgroundColor: "#d7edf0",
           borderRadius: 80,
-          
-          borderLeftWidth:20,
-          borderRightWidth:20,
-          borderTopWidth:5,
-          marginBottom:0,
-          marginTop: hp('98%'),
+
+          borderLeftWidth: 20,
+          borderRightWidth: 20,
+          borderTopWidth: 5,
+          marginBottom: 0,
+          marginTop: hp("99%"),
           position: "absolute",
-          borderColor:'#598094'
+          borderColor: "#598094",
         }}
       >
-       <MaterialIcons
+      <MaterialIcons
           name="no-meals"
           size={30}
           color="black"
@@ -179,7 +241,7 @@ hi.map(item=>(
         />
         <AntDesign
           name="home"
-          size={33}
+          size={30}
           color="black"
           style={{
             alignItems: "center",
@@ -190,17 +252,19 @@ hi.map(item=>(
         />
         <AntDesign
           name="book"
-          size={33}
+          size={30}
           color="black"
           style={{
             alignItems: "center",
             marginLeft: 273,
-            marginTop: hp("-4%"),
+            marginTop: hp("-3.7%"),
           }}
           onPress={() => navigation.navigate("EA")}
         />
-      </View> 
-
+         
+        
+        
+      </View>
     </View>
   );
 }

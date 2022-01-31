@@ -12,13 +12,23 @@ var diet=""
 var goal=""
 var choice=""
 var img=""
+var water=0
 var recommend=[]
 var e=[]
+var dat=""
+var d=[0,0,0,0,0,0,0]
+var fno=0
 var getname=function(){return name}
 var setname=function(n){name=n}
 
+
 var getimg=function(){return img}
 var setimg=function(n){img=n}
+
+
+
+var getfno=function(){return fno}
+var setfno=function(n){fno=n}
 
 var getid=function(){return id}
 var setid=function(n){id=n}
@@ -34,6 +44,9 @@ var setcweight=function(n){cweight=n}
 
 var getgoal=function(){return goal}
 var setgoal=function(n){goal=n}
+
+var getwater=function(){return water}
+var setwater=function(n){water=n}
 
 var getgweight=function(){return gweight}
 var setgweight=function(n){gweight=n}
@@ -52,11 +65,22 @@ var setchoice=function(n){choice=n}
 
 var gete=function(){return e}
 var sete=function(n){e=n}
+
+var getdat=function(){return dat}
+var setdat=function(n){dat=n}
+var getdatap=function(){return d}
+var getdates=function(i){return d[i]}
+var setdates=function(n,i){d[n]=i}
 return{
+getdatap:getdatap,
+getdat:getdat,
+setdat:setdat,
 getchoice:getchoice,
 setchoice: setchoice,
 gete:gete,
 sete: sete,
+setwater:setwater,
+getwater:getwater,
 getname:getname,
 setname: setname,
 setemail:setemail,
@@ -78,8 +102,11 @@ setdiet:setdiet,
 getgender:getgender,
 setgender:setgender,
 getrecommend:getrecommend,
-setrecommend:setrecommend
-
+setrecommend:setrecommend,
+getdates:getdates,
+setdates:setdates,
+getfno:getfno,
+setfno:setfno,
 }
 })();
 

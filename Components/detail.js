@@ -31,10 +31,12 @@ function generateNumber(){
 var RandomNumber = Math.floor(Math.random() * 100) + 1 ;
 setno(RandomNumber)
 setok(true)
+
+
+
 }
 
 function start(){
-
 
 
 async()=>{
@@ -55,10 +57,7 @@ title:ExcersiseStore.gettitle()
 
 
 
-async ()=>{
-await firebase.db.collection('users').doc(User.getid()).collection('myexer').add({
-title:ExcersiseStore.gettitle(),
-img:ExcersiseStore.getimg()})}
+
 
 
 

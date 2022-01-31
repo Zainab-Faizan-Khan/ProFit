@@ -300,20 +300,20 @@ console.log("feedback submitted!");}
            </View>
           </View>
 </KeyboardAvoidingView>
-      <View
+<View
         style={{
           height: 200,
-          width: wp('100%'),
-          backgroundColor: "transparent",
+          width: wp("100%"),
+          backgroundColor: "#d7edf0",
           borderRadius: 80,
-          
-          borderLeftWidth:20,
-          borderRightWidth:20,
-          borderTopWidth:5,
-          marginBottom:0,
-          marginTop: hp('99%'),
+
+          borderLeftWidth: 20,
+          borderRightWidth: 20,
+          borderTopWidth: 5,
+          marginBottom: 0,
+          marginTop: hp("99%"),
           position: "absolute",
-          borderColor:'#598094'
+          borderColor: "#598094",
         }}
       >
       <MaterialIcons
@@ -336,7 +336,7 @@ console.log("feedback submitted!");}
         />
         <AntDesign
           name="home"
-          size={33}
+          size={30}
           color="black"
           style={{
             alignItems: "center",
@@ -347,18 +347,19 @@ console.log("feedback submitted!");}
         />
         <AntDesign
           name="book"
-          size={33}
+          size={30}
           color="black"
           style={{
             alignItems: "center",
             marginLeft: 273,
-            marginTop: hp("-4%"),
+            marginTop: hp("-3.7%"),
           }}
           onPress={() => navigation.navigate("EA")}
         />
-    
-      </View> 
-    
+         
+        
+        
+      </View>
      
     
     </View>
